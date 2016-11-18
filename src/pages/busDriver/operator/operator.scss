@@ -1,0 +1,81 @@
+.busdriver-operator {
+  ng2-echart {
+    display: block;
+    width: 100%;
+    height: 300px;
+  }
+  ion-grid {
+    padding: 0;
+  }
+
+  .content-container {
+    display: block;
+    width: 100%;
+  }
+  .single-row {
+    height: 60px;
+    font-size: 20px;
+    border-top: 0.55px #e4e4e4 solid;
+  }
+
+  .analyze-maplayer {
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    ng2-baidu-map {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .item-info {
+    &:last-of-type {
+      text-align: right;
+    }
+    padding: 4px 20px 4px 20px;
+    span {
+      color: #FF0000;
+    }
+    p {
+      line-height: 28px;
+      font-size: 28px;
+      margin: 0;
+      margin-bottom: 10px;
+    }
+
+  }
+  .item-box-top-right {
+    padding: 25px 10px 22px 10px;
+    text-align: center;
+    font-size: 15px;
+    height: 112px;
+    overflow: hidden;
+    color: #989898;
+    border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    span {
+      font-size: 20px;
+      color: #000;
+    }
+  }
+
+  .item-box-top {
+    padding: 25px 10px 22px 10px;
+    text-align: center;
+    font-size: 15px;
+    color: #989898;
+    height: 112px;
+    overflow: hidden;
+    border-top: 1px solid #ddd;
+    span {
+      font-size: 20px;
+      color: #000;
+    }
+  }
+}

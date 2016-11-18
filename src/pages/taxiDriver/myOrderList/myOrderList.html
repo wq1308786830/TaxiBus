@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      我的订单
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="taxidriver-myorderlist">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <div class="myorder-item" *ngFor="let bean of orderList">
+      <p class="item-line">{{bean.driveOnTime}}<span>已完成</span></p>
+      <p class="item-line"><img src="assets/img/dealok.png"> 金陵制造局 <ion-icon name="arrow-forward"></ion-icon></p>
+      <p class="item-line"><img src="assets/img/dealok.png"> 南京南站</p>
+    </div>
+  </ion-list>
+</ion-content>

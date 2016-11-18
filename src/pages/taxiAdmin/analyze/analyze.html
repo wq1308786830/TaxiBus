@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      运营
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="analyze">
+  <ion-item class="select-analyze-type">
+		<ion-select [(ngModel)]="dataType" interface="action-sheet">
+			<ion-option value="order" selected="true">订单分析</ion-option>
+			<!--<ion-option value="heat">热力分析</ion-option>
+			<ion-option value="service">服务分析</ion-option>
+      <ion-option value="weigui">违规分析</ion-option>
+      <ion-option value="weifa">违法分析</ion-option>-->
+		</ion-select>
+	</ion-item>
+
+	<ion-row class="date-type-container">
+		<ion-col>
+			<bird-dateselect (datePickCB)="datePickRes($event)"></bird-dateselect>
+		</ion-col>
+	</ion-row>
+
+  <div [ngSwitch]="dataType">
+    <!-- order -->
+    <div *ngSwitchCase="'order'">
+      <ng2-echart #orderEchart [options]="eChartOptions"></ng2-echart>
+      <ion-grid>
+        <ion-row center>
+          <ion-col class="item-info"><p class="green">{{operationInfo.totalOpeCount}}</p>月订单:条</ion-col>
+          <ion-col class="item-info"><p class="red">{{operationInfo.totalFee}}</p>月收入:元</ion-col>
+        </ion-row>
+
+        <ion-row center>
+          <ion-col width-33 class="item-box-top-right"><span>{{operationInfo.totalRun}}</span><br><br>载客里程:公里</ion-col>
+          <ion-col width-33 class="item-box-top-right"><span>{{operationInfo.totalEmptyDrive}}</span><br><br>空驶里程:公里</ion-col>
+          <ion-col width-33 class="item-box-top"><span>{{operationInfo.mileageRate}}%</span><br><br>载客效率</ion-col>
+        </ion-row>
+        <ion-row center>
+          <ion-col width-33 class="item-box-top-right"><span>¥{{operationInfo.feeTaxiHundredKm}}</span><br><br>百里营收</ion-col>
+          <ion-col width-33 class="item-box-top-right"><span>{{operationInfo.mileageTaxiOne}}</span><br><br>订单均行驶距离:公里</ion-col>
+          <ion-col width-33 class="item-box-top"><span>¥{{operationInfo.feeTaxiOne}}</span><br><br>订单均营收</ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <!-- heat map -->
+    <!--<ng2-baidu-map [options]="mapOptions" *ngSwitchCase="'heat'"></ng2-baidu-map>-->
+
+    <!-- service -->
+    <!--<div *ngSwitchCase="'service'">
+      <ng2-echart [options]="eChartOptions"></ng2-echart>
+      <ion-grid>
+        <ion-row center>
+          <ion-col class="item-info">月投诉条<span>39846</span></ion-col>
+          <ion-col class="item-info">服务平均星数<span>4.8</span></ion-col>
+        </ion-row>
+
+        <ion-row center>
+          <ion-col class="item-box-top-right">23.7<br><br>投诉总数</ion-col>
+          <ion-col class="item-box-top-right">25.7km<br><br>处理完结</ion-col>
+          <ion-col class="item-box-top">112<br><br>处理中条</ion-col>
+        </ion-row>
+        <ion-row center>
+          <ion-col class="item-box-top-right">82%<br><br>投诉处理率</ion-col>
+          <ion-col class="item-box-top-right">50.2<br><br>评价总条数</ion-col>
+          <ion-col class="item-box-top">4.8<br><br>平均星数</ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>-->
+
+    <!-- 违规分析 -->
+    <!--<div *ngSwitchCase="'weigui'">
+      <ng2-echart [options]="eChartOptionsWeigui"></ng2-echart>
+      <ion-grid>
+        <ion-row center>
+          <ion-col class="item-info">月违规次<span>398</span></ion-col>
+          <ion-col class="item-info">全年违规次<span>1231</span></ion-col>
+        </ion-row>
+
+        <ion-row center>
+          <ion-col class="item-box-top-right">2327<br><br>无证上岗</ion-col>
+          <ion-col class="item-box-top-right">2017<br><br>擅自提价</ion-col>
+          <ion-col class="item-box-top">531<br><br>拒载乘客</ion-col>
+        </ion-row>
+        <ion-row center>
+          <ion-col class="item-box-top-right">333<br><br>无证上岗</ion-col>
+          <ion-col class="item-box-top-right">222<br><br>擅自提价</ion-col>
+          <ion-col class="item-box-top">111<br><br>拒载乘客</ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>-->
+  </div>
+
+</ion-content>

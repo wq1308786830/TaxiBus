@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-searchbar placeholder="请输入车牌号搜索" (ionInput)="onInsertText($event)"></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button (click)="onCLickSearch()">搜索</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="taxiadmin-search">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <button ion-button round (click)="onClickKeyun()">客运出租</button>
+      </ion-col>
+      <ion-col> 
+        <button ion-button round (click)="onClickJida()">吉达出租</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

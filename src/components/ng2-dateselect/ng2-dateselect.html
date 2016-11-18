@@ -1,0 +1,25 @@
+<div tappable (click)="onClickSelect($event)" class="dateselect-container">
+    <div [ngSwitch]="selectType">
+        <div *ngSwitchCase="'month'">
+            <ion-row>
+                <ion-col width-33><button ion-button block clear>{{preMonth | date:'yyyy年MM月'}}</button></ion-col>
+                <ion-col width-33><button ion-button block clear color="danger">{{curMonth | date:'yyyy年MM月'}}</button></ion-col>
+                <ion-col width-33><button ion-button block clear>{{nextMonth | date:'yyyy年MM月'}}</button></ion-col>
+            </ion-row>
+        </div>
+
+        <div *ngSwitchCase="'year'">
+            <ion-row>
+                <ion-col><button ion-button block clear>{{curYear-1}}年</button></ion-col>
+                <ion-col><button ion-button block clear color="danger">{{curYear}}年</button></ion-col>
+                <ion-col><button ion-button block clear>{{curYear+1}}年</button></ion-col>
+            </ion-row>
+        </div>
+
+        <div *ngSwitchCase="'cumtom'">
+            <ion-row>
+                <ion-col><button ion-button block clear>{{startDate | date:'yyyy年MM月dd日'}}－{{endDate | date:'yyyy年MM月dd日'}}</button></ion-col>
+            </ion-row>
+        </div>
+    </div>
+</div>

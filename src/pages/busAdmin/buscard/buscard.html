@@ -1,0 +1,31 @@
+
+<div class="busadmin-buscard">
+    <div tappable class="card-backdrop" (click)="onClickBd()">
+    </div>
+    <div class="card-content">
+        <ion-row>
+            <ion-col><span class="card-title">基础信息</span></ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col><span class="card-item-title">司机姓名</span> {{busInfo.drivername}}</ion-col>
+            <ion-col><span class="card-item-title">工号</span> {{busInfo.driverno}}</ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col><span class="card-item-title">车牌号</span> {{busInfo.busno}}</ion-col>
+            <ion-col><span class="card-item-title">所属线路</span> {{busInfo.linename}}</ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col><span class="card-item-title">所属部门</span> {{busInfo.departname}}</ion-col>
+            <ion-col><span class="card-item-title">座位数</span> {{busInfo.seatcount}}</ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col><span class="card-item-title">品牌</span> {{busInfo.brand}}</ion-col>
+            <ion-col><span class="card-item-title">颜色</span> {{busInfo.color}}</ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col><button ion-button class="card-tool-button" (click)="onClickVideo()">车辆视频</button></ion-col>
+            <ion-col><button ion-button class="card-tool-button" (click)="onClickDriverDetail()">车辆详情</button></ion-col>
+        </ion-row>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+.busadmin-buslist {
+  .select-department-id {
+    width: 100%;
+
+    .select-ios .select-placeholder {
+      display: none;
+    }
+
+    ion-select {
+      overflow: hidden;
+      max-width: 100%;
+      font-size: 1.6rem;
+      margin: auto;
+    }
+
+    .select-text {
+      overflow: hidden;
+      min-width: 16px;
+      font-size: inherit;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-align: center;
+    }
+  }
+  .ion-ios-search-list {
+    content: url("../assets/img/sd.png");
+    min-height: 18px;
+    height: 18px;
+    width: 24px;
+  }
+
+  .ion-ios-search-list-gray {
+    content: url("../assets/img/sd12.png");
+    min-height: 18px;
+    height: 18px;
+    width: 24px;
+  }
+  .badge-ios-red {
+    color: #fff;
+    background-color: #EA593E;
+  }
+  .badge-ios-yellow {
+    color: #fff;
+    background-color: #EFA421;
+  }
+  .badge-ios-green {
+    color: #fff;
+    background-color: #29CF8F;
+  }
+  .label-ios {
+    margin: 6px 0;
+    padding: 13px 8px 12px 0;
+  }
+}

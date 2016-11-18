@@ -1,0 +1,30 @@
+
+<div class="taxicard">
+    <div tappable class="card-backdrop" (click)="onClickBd()">
+    </div>
+    <div class="card-content">
+        <ion-row>
+            <ion-col><span class="card-title">{{taxiInfo.carNo}}</span></ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col><span class="card-item-title">所属公司</span> {{taxiInfo.departName}}</ion-col>
+            <ion-col><span class="card-item-title">品牌</span> {{taxiInfo.hostBrand}}</ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col><span class="card-item-title">联系电话</span> {{taxiInfo.phone}}</ion-col>
+            <ion-col><span class="card-item-title">颜色</span> {{taxiInfo.carColor}}</ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col><span class="card-item-title">应保养日期</span> {{taxiInfo.keepDate}}</ion-col>
+            <ion-col><span class="card-item-title">状态</span> {{taxiInfo.state}}</ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col><span class="card-item-title">公司地址</span> {{taxiInfo.address}}</ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col><button ion-button class="card-tool-button" (click)="onClickVideo()">车辆视频</button></ion-col>
+            <ion-col><button ion-button class="card-tool-button" (click)="onClickDriverDetail()">人员信息</button></ion-col>
+        </ion-row>
+    </div>
+</div>

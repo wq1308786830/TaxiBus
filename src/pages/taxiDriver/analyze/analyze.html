@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      运营
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="taxidriver-analyze">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <bird-dateselect (datePickCB)="datePickRes($event)"></bird-dateselect>
+
+  <ng2-echart #operationchart [options]="eChartOptions"></ng2-echart>
+
+  <ion-grid>
+    <ion-row center>
+      <ion-col class="item-info"><p class="green">{{operationInfo.totalOpeCount}}</p>月订单:条</ion-col>
+      <ion-col class="item-info"><p class="red">{{operationInfo.totalFee}}</p>月收入:元</ion-col>
+    </ion-row>
+
+    <ion-row center>
+      <ion-col class="item-box-top-right"><span>{{operationInfo.totalRun}}</span><br><br>载客里程:公里</ion-col>
+      <ion-col class="item-box-top-right"><span>{{operationInfo.totalEmptyDrive}}</span><br><br>空驶里程:公里</ion-col>
+      <ion-col class="item-box-top"><span>{{operationInfo.mileageRate}}%</span><br><br>载客效率</ion-col>
+    </ion-row>
+
+    <ion-row center>
+      <ion-col class="item-box-top-right"><span>¥{{operationInfo.feeTaxiHundredKm}}</span><br><br>百里营收</ion-col>
+      <ion-col class="item-box-top-right"><span>{{operationInfo.mileageTaxiOne}}</span><br><br>订单均行驶距离:公里</ion-col>
+      <ion-col class="item-box-top"><span>¥{{operationInfo.feeTaxiOne}}</span><br><br>订单均营收</ion-col>
+     </ion-row>
+  </ion-grid>
+
+</ion-content>

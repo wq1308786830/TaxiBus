@@ -1,0 +1,24 @@
+<ion-content class="taxidriver-my">
+  <div class ="header-avatar">
+    <!--<div class="top-right">-->
+      <!--<img src="assets/img/msg.png">-->
+    <!--</div>-->
+    <img src="assets/img/tx.png">
+    <p>{{myInfo.driverName}}</p>
+    <p>车牌号：{{myInfo.carNo}}</p>
+  </div>
+  <ion-list>
+    <ion-item tappable (click)="onClickMyOrder()">
+      <ion-avatar item-left>
+        <img src="assets/img/dd.png">
+      </ion-avatar>
+      <h2>我的订单</h2>
+    </ion-item>
+    <ion-item tappable (click)="onClickSetAlert()">
+      <ion-avatar item-left>
+        <img src="assets/img/jg.png">
+      </ion-avatar>
+      <h2>警告设置</h2>
+    </ion-item>
+  </ion-list>
+</ion-content>

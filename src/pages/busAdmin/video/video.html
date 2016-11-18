@@ -1,0 +1,17 @@
+<ion-header>
+    <ion-navbar no-border-bottom>
+        <ion-title>
+            {{busGpsInfo.carNo}}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="busadmin-video">
+    <ion-list>
+        <ion-item tappable detail-push *ngFor="let item of cameraList" (click)="startPlay(item)">
+            <ion-icon name="search-list" item-left></ion-icon>
+            <h2>{{item.channelName}}</h2>
+        </ion-item>
+    </ion-list>
+    <div class="maplayer" id="googlemap"></div>
+</ion-content>

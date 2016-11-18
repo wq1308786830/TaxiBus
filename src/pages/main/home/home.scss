@@ -1,0 +1,39 @@
+.main-home {
+    .slide-container {
+        width: 100%;
+        min-height: 100px;
+    }
+
+    .item-box-top-right {
+        background-color: #F9FAFB;
+        padding: 10px;
+        text-align: center;
+        
+        border-top: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+
+        img{
+            width: 50px;
+            height: 50px;
+            margin: auto;
+        }
+    }
+    
+    .item-box-top {
+        background-color: #F9FAFB;
+        padding: 10px;
+        text-align: center;
+        
+        border-top: 1px solid #ddd;
+
+        img{
+            width: 50px;
+            height: 50px;
+            margin: auto;
+        }
+    }
+
+    .item-box-border-bottom {
+        border-bottom: 1px solid #ddd;
+    }
+}

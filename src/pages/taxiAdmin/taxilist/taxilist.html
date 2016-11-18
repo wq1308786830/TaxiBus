@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <ion-buttons start>
+      <button ion-button (click)="onCLickBack()">返回</button>
+    </ion-buttons>
+    <ion-title>
+      名录
+    </ion-title>
+  </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="listType">
+      <ion-segment-button value="A112">
+        客运出租
+      </ion-segment-button>
+      <ion-segment-button value="A111">
+        吉达出租
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="taxilist">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div [ngSwitch]="listType">
+    <ion-list *ngSwitchCase="'A112'">
+      <ion-item tappable detail-push *ngFor="let taxi of keyunTaxis" (click)="onClickItem(taxi)">
+        <ion-icon name="search-list" item-left></ion-icon>
+        <!--灰色图标-->
+        <!--<ion-icon name="search-list-gray" item-left></ion-icon>-->
+        <h2>{{taxi.carNO}}</h2>
+        <p>{{taxi.departName}}</p>
+        <ion-badge item-right color="red">{{taxi.totoalRecords}}k</ion-badge>
+        <!--黄色和绿色的badges-->
+        <!--<ion-badge item-right color="yellow">30</ion-badge>
+        <ion-badge item-right color="green">5</ion-badge>-->
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'A111'">
+      <ion-item tappable detail-push *ngFor="let taxi of jidaTaxis" (click)="onClickItem(taxi)">
+        <ion-icon name="search-list" item-left></ion-icon>
+        <h2>{{taxi.carNO}}</h2>
+        <p>{{taxi.departName}}</p>
+        <ion-badge item-right>{{taxi.totoalRecords}}k</ion-badge>
+      </ion-item>
+    </ion-list>
+  </div>
+
+</ion-content>

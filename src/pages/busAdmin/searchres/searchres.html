@@ -1,0 +1,23 @@
+<ion-header>
+	<ion-navbar hideBackButton="false">
+		<ion-buttons start>
+			<button ion-button (click)="onCLickBack()">返回</button>
+		</ion-buttons>
+		<ion-title>{{title}}</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="busadmin-searchresult">
+	<div class="search-listlayer" #listlayer>
+		<ion-list>
+			<ion-item tappable *ngFor="let bus of busList" (click)="onClickItem(bus)">
+        <ion-icon name="search-list" item-left></ion-icon>
+
+        <h2>{{bus.busno}}</h2>
+				<p>{{bus.departname}}</p>
+				<ion-icon name="arrow-forward" item-right></ion-icon>
+			</ion-item>
+		</ion-list>
+	</div>
+
+</ion-content>

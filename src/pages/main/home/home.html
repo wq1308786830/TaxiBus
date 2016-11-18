@@ -1,0 +1,32 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>
+			交通管理平台
+		</ion-title>
+		<ion-buttons end>
+			<button ion-button (click)="onCLickChangePassword()">修改密码</button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="main-home">
+	<div class="slide-container">
+		<img src="assets/img/home-slide1.jpg">
+	</div>
+
+	<ion-grid>
+		<ion-row center>
+			<ion-col class="item-box-top-right" tappable (click)="onClickItem(1)"><img src="assets/img/x_cczgl.png"><br>出租车管理</ion-col>
+			<ion-col class="item-box-top-right" tappable (click)="onClickItem(2)"><img src="assets/img/x_dlgy.png"><br>道路管养</ion-col>
+			<ion-col class="item-box-top" tappable (click)="onClickItem(3)"><img src="assets/img/x_gcxmjg.png"><br>项目监管</ion-col>
+		</ion-row>
+
+		<ion-row center>
+			<ion-col class="item-box-top-right item-box-border-bottom" tappable (click)="onClickItem(4)"><img src="assets/img/x_gjcgl.png"><br>公交车管理</ion-col>
+			<ion-col class="item-box-top-right item-box-border-bottom" tappable (click)="onClickItem(5)"><img src="assets/img/x_gjgrp.png"><br>公交ERP</ion-col>
+			<ion-col class="item-box-top item-box-border-bottom" tappable (click)="onClickItem(6)"><img src="assets/img/x_gjdd.png"><br>公交调度</ion-col>
+		</ion-row>
+	</ion-grid>
+
+
+</ion-content>

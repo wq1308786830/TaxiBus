@@ -1,0 +1,40 @@
+.taxidriver-myorderlist {
+    background-color: #eeeeee;
+
+    .myorder-item {
+        position: relative;
+        
+        padding: 10px;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-bottom-color: #aaaaaa;
+        margin-bottom: 15px;
+        background-color: #ffffff;
+
+        p {
+            padding: 0px;
+            margin: 5px;
+        }
+
+        .item-line {
+            display: block;
+            width: 100%;
+
+            img {
+                width: 20px;
+                height: 20px;
+                vertical-align: middle;
+            }
+
+            span {
+                position: absolute;
+                right: 10px;
+            }
+
+            ion-icon {
+                position: absolute;
+                right: 10px;
+            }
+        }
+    }
+}

@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      安全
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button color="royal" class="tips-pop" (click)="onClickNotices()"></button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="busdriver-security">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-row>
+    <ion-col class="top-item">
+      <div><span class="number">{{saftyInfo.illegalCount}}</span>次<br>违章</div>
+    </ion-col>
+    <ion-col class="top-item">
+      <div><span class="number">{{saftyInfo.violationCount}}</span>次<br>违规</div>
+    </ion-col>
+    <ion-col class="top-item">
+      <div><span class="number">{{saftyInfo.detainScore}}</span>分<br>扣分</div>
+    </ion-col>
+  </ion-row>
+
+  <div class="item-header">
+    <div class="list-item-header-icon"></div>交通违章
+    <button ion-button clear class="all-button" (click)="onClickAllIllegal()">全部 ></button>
+  </div>
+
+  <div class="item-container" *ngFor="let bean of illegalList">
+    <div>
+      <ion-icon name="clock" isActive="false"></ion-icon> {{bean.illegalTime}}
+    </div>
+    <div class="item-result-blue">扣{{bean.detainScore}}分</div>
+    <div class="item-result-red">{{bean.fineSituation}}</div>
+    <div class="item-title">违章地点</div>
+    <div class="item-content">{{bean.illegalPlace}}</div>
+    <div class="item-title">违章条例</div>
+    <div class="item-content">{{bean.illegalRegulation}}</div>
+    <img class="item-image" src="assets/img/dealok.png">
+  </div>
+
+  <div class="item-header">
+    <div class="list-item-header-icon"></div>运营违章
+    <button ion-button clear class="all-button" (click)="onClickAllViolation()">全部 ></button>
+  </div>
+  <div class="item-container" *ngFor="let bean of violationList">
+    <div>
+      <ion-icon name="clock" isActive="false"></ion-icon> {{bean.violationTime}}
+    </div>
+    <div class="item-result-blue">扣{{bean.detainScore}}分</div>
+    <div class="item-result-red">{{bean.fineSituation}}</div>
+    <div class="item-title">违章地点</div>
+    <div class="item-content">{{bean.violationPlace}}</div>
+    <div class="item-title">违章条例</div>
+    <div class="item-content">{{bean.violationRegulation}}</div>
+    <img class="item-image" src="assets/img/dealok.png">
+  </div>
+</ion-content>

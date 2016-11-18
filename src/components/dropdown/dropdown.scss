@@ -1,0 +1,56 @@
+bird-dropdown {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center; 
+}
+
+.dropdown-wrapper {
+  z-index: 10;
+  opacity: 0; 
+}
+
+.dropdown-content {
+  position: absolute;
+  z-index: 10;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: auto;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column; 
+}
+
+.dropdown-content .scroll-content {
+  position: relative; 
+}
+
+.dropdown-content {
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  max-height: 90%;
+  border-radius: 0px;
+  color: #000;
+  background: #fff; 
+}
+
+.dropdown-content ion-content {
+    background: #fff; 
+}
+
+.dropdown-content .item {
+  background-color: #fff; 
+}

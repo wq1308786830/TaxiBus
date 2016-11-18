@@ -1,0 +1,81 @@
+.main-tab {
+  .tabs-ios .tab-button-icon {
+    min-width: 32px;
+    height: 50px;
+    font-size: 30px;
+  }
+
+  .ion-ios-tab-monitor {
+    content: url("../assets/img/dbl_l_jk.png");
+    width: 32px;
+    height: 50px;
+  }
+
+  .ion-ios-tab-monitor-outline {
+    content: url("../assets/img/dbl_a_jk.png");
+    width: 32px;
+    height: 50px;
+  }
+
+  .ion-ios-tab-contacts {
+    content: url("../assets/img/dbl_l_ml.png");
+    width: 32px;
+    height: 50px;
+  }
+
+  .ion-ios-tab-contacts-outline {
+    content: url("../assets/img/dbl_a_ml.png");
+    width: 32px;
+    height: 50px;
+  }
+
+
+  //todo:修改替换图片
+  .ion-ios-tab-statistics {
+    content: url("../assets/img/tabtj_b.png");
+    width: 32px;
+    height: 50px;
+  }
+
+  .ion-ios-tab-statistics-outline {
+    content: url("../assets/img/tabtj_a.png");
+    width: 32px;
+    height: 50px;
+  }
+
+  .ion-ios-tab-safe {
+    content: url("../assets/img/dbl_l_aq.png");
+    width: 32px;
+    height: 50px;
+  }
+
+  .ion-ios-tab-safe-outline {
+    content: url("../assets/img/dbl_a_aq.png");
+    width: 32px;
+    height: 50px;
+  }
+
+  .ion-ios-tab-yunying {
+    content: url("../assets/img/dbl_l_yy.png");
+    width: 32px;
+    height: 50px;
+  }
+
+  .ion-ios-tab-yunying-outline {
+    content: url("../assets/img/dbl_a_yy.png");
+    width: 32px;
+    height: 50px;
+  }
+
+  .ion-ios-tab-mine {
+    content: url("../assets/img/dbl_l_w.png");
+    width: 32px;
+    height: 50px;
+  }
+
+  .ion-ios-tab-mine-outline {
+    content: url("../assets/img/dbl_a_w.png");
+    width: 32px;
+    height: 50px;
+  }
+}

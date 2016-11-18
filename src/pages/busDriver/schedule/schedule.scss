@@ -1,0 +1,64 @@
+.busdriver-schedule {
+
+  .item-header {
+    display: block;
+    width: 100%;
+    height: 50px;
+    padding-left: 10px;
+    background-color: #FAFBFD;
+    line-height: 50px;
+    margin-top: 2px;
+    border-bottom: 0.55px #e4e4e4 solid;
+    border-top: 0.55px #e4e4e4 solid;
+    .list-item-header-icon {
+      display: inline-block;
+      width: 5px;
+      height: 30px;
+      background-color: #5093E1;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+  }
+
+  .item-doing-task {
+    .site-info {
+      background-color: #F8F9FA;
+      .info-box {
+        display: inline-block;
+        width: 100%;
+        height: auto;
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-right: 1px solid #ddd;
+        &:last-of-type {
+          border: none;
+        }
+        .title {
+          color: #5093E1;
+          font-size: 20px;
+        }
+        span:first-of-type {
+          display: inline-block;
+          margin-bottom: 6px;
+        }
+      }
+    }
+  }
+  .item-ios {
+    border-bottom: 0.55px #e4e4e4 solid;
+    h2 {
+      margin: 0 0 6px;
+    }
+    p {
+      color: #989898;
+      font-size: 1.4rem;
+    }
+    .item-block {
+      border-bottom: 0.55px #e4e4e4 solid;
+      .item-inner {
+        border: none;
+      }
+    }
+  }
+}

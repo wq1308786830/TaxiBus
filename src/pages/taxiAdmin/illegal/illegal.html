@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-navbar no-border-bottom>
+        <ion-title>
+            交通违章
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="trafficviolation">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+    <ion-list>
+        <div class="traffic-violation-item" *ngFor="let bean of illegalList">
+            <div><ion-icon name="clock" isActive="false"></ion-icon> {{bean.illegalTime}}</div>
+            <div class="item-result-yellow">{{bean.detainScore}}</div>
+            <div class="item-result-red">{{bean.fineSituation}}</div>
+            <div class="item-title">违章地点</div>
+            <div class="item-content">{{bean.illegalPlace}}</div>
+            <div class="item-title">违章条例</div>
+            <div class="item-content">{{bean.illegalRegulation}}</div>
+            <img class="item-image" src="assets/img/dealok.png">
+        </div>
+    </ion-list>
+
+</ion-content>

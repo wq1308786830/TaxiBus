@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar no-border>
+    <ion-title>
+      通知
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="busdriver-notices">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div padding>
+    <ion-segment [(ngModel)]="notices">
+      <ion-segment-button value="depart">
+        发车通知
+      </ion-segment-button>
+      <ion-segment-button value="safe">
+        安全通知
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <div [ngSwitch]="notices">
+    <ion-list *ngSwitchCase="'depart'">
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="assets/img/gt_c.png">
+        </ion-thumbnail>
+        <h4>2016年6月12日16:30:30分发车</h4>
+        <h4>客运东站 ——> 紫竹南苑</h4>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'safe'">
+      <ion-item>
+      <ion-thumbnail item-left>
+        <img src="assets/img/gt_a.png">
+      </ion-thumbnail>
+      <h4>2016年6月12日16:30:30</h4>
+      <h4>清水亭2号</h4>
+      <h4>机动车为感交通禁令指示</h4>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="assets/img/gt_b.png">
+        </ion-thumbnail>
+        <h4>2016年6月12日16:30:30</h4>
+        <h4>清水亭2号</h4>
+        <h4>机动车为感交通禁令指示</h4>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

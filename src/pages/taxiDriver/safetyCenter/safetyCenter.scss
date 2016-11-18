@@ -1,0 +1,84 @@
+.taxidriver-safetycenter {
+  .top-item {
+    display: inline-block;
+    width: 100%;
+    height: 80px;
+    text-align: center;
+    padding-top: 20px;
+
+    .number {
+      color: #ffaa00;
+      font-size: 20px;
+    }
+  }
+
+  .item-header {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 50px;
+    padding-left: 10px;
+    background-color: #FAFBFD;
+    line-height: 50px;
+    margin-top: 2px;
+    border-bottom: 0.55px #e4e4e4 solid;
+    border-top: 0.55px #e4e4e4 solid;
+    .list-item-header-icon {
+      display: inline-block;
+      width: 5px;
+      height: 30px;
+      background-color: #ffaa00;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+
+    .all-button {
+      position: absolute;
+      right: 5px;
+    }
+  }
+
+  .item-container {
+    position: relative;
+
+    padding: 10px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #dddddd;
+
+    .item-result {
+      display: inline-block;
+      margin: 8px 8px;
+      padding: 3px 8px;
+      text-align: center;
+
+      color: #ff2288;;
+
+      border-style: solid;
+      border-width: 1px;
+      border-color: #ff2288;
+      border-radius: 20px;
+    }
+
+    .item-title {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #a1a1a1;
+    }
+
+    .item-content {
+      font-size: 15px;
+    }
+
+    .item-image {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 70px;
+      height: 70px;
+    }
+  }
+  .button-clear-ios {
+    color: #989898;
+  }
+}

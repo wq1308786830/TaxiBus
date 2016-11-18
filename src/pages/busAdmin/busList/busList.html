@@ -1,0 +1,40 @@
+<ion-header>
+	<ion-navbar no-border-bottom>
+    <ion-buttons start>
+      <button ion-button (click)="onCLickBack()">返回</button>
+    </ion-buttons>
+		<ion-title>
+			名录
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding class="busadmin-buslist">
+	<ion-refresher (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+  <ion-item class="select-department-id">
+	<ion-select [(ngModel)]="curDepartmentId" interface="action-sheet" (ionChange)="onDepartmentSel($event)">
+		<ion-option selected="true" value="">全部</ion-option>
+		<ion-option *ngFor="let item of departments" value={{getnDepartmentValue(item)}}>{{item.departname}}</ion-option>
+	</ion-select>
+  </ion-item>
+
+	<ion-list>
+		<ion-item tappable detail-push *ngFor="let bus of buslist" (click)="onClickBusItem(bus)">
+			<ion-icon name="search-list" item-left></ion-icon>
+        <!--灰色图标-->
+        <!--<ion-icon name="search-list-gray" item-left></ion-icon>-->
+			<h2>{{bus.busNo}}</h2>
+			<p>{{bus.departmentName}} - {{bus.lineName}}</p>
+			<ion-badge color={{getColorname(bus.colorLevel)}} style.display={{getVisibel(bus.violationsCount)}} item-right>
+				{{bus.violationsCount}}
+			</ion-badge>
+		</ion-item>
+	</ion-list>
+
+	<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+		<ion-infinite-scroll-content></ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+
+</ion-content>

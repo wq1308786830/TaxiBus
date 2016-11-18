@@ -1,0 +1,91 @@
+
+.busdriver-mysalary {
+  .dateselect-container {
+    border-bottom: 0.55px #e4e4e4 solid;
+  }
+  .header-avatar {
+    display: block;
+    position: relative;
+    padding-top: 20px;
+    width: 100%;
+    height: 210px;
+    margin: 0px;
+    background-color: #fff;
+    border-bottom: 0.55px #e4e4e4 solid;
+    img {
+      display: block;
+      position: relative;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 20px;
+    }
+
+    p {
+      text-align: center;
+      font-size: 18px;
+      color: #000;
+      margin: 10px 5px 5px 5px;
+      &:last-of-type {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .main-item {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    padding-left: 40px;
+    border-bottom: 1px solid #eee;
+
+    font-size: 20px;
+    line-height: 50px;
+
+    .item-forward {
+      display: inline-block;
+    }
+
+    .item-down {
+      display: none;
+    }
+
+    .right-item {
+      position: absolute;
+      right: 20px;
+      top: 15px;
+    }
+
+    .left-item {
+      position: absolute;
+      left: 20px;
+      top: 0px;
+    }
+  }
+
+  .sub-list {
+    display: none;
+
+    .sub-item {
+      position: relative;
+      width: 100%;
+      height: 50px;
+      padding-left: 20px;
+      border-bottom: 1px solid #ddd;
+      background-color: #eee;
+
+      font-size: 20px;
+      line-height: 50px;
+
+      .right-item {
+        position: absolute;
+        top: 0px;
+        right: 20px;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-navbar no-border-bottom>
+        <ion-title>
+            {{businfo.busno}}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="busadmin-businfo">
+    <ion-grid>
+      <ion-row center>
+        <ion-col tappable class="info-header-item" (click)="onClickItem(1)"><img src="assets/img/yywz.png"><p>运营违规</p></ion-col>
+        <ion-col tappable class="info-header-item" (click)="onClickItem(2)"><img src="assets/img/wg_jtwzb.png"><p>交通违规</p></ion-col>
+        <ion-col tappable class="info-header-item" (click)="onClickItem(3)"><img src="assets/img/wg_clbxa.png"><p>车辆保险</p></ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div class="item-list">
+        <ion-item><span class="item-title">司机姓名</span><div item-right>{{businfo.drivername}}</div></ion-item>
+        <ion-item><span class="item-title">工号</span><div item-right>{{businfo.driverno}}</div></ion-item>
+        <ion-item><span class="item-title">车牌号</span><div item-right>{{businfo.busno}}</div></ion-item>
+        <ion-item><span class="item-title">所属线路</span><div item-right>{{businfo.linename}}</div></ion-item>
+        <ion-item><span class="item-title">所属部门</span><div item-right>{{businfo.departname}}</div></ion-item>
+        <ion-item><span class="item-title">座位数</span><div item-right>{{businfo.seatcount}}</div></ion-item>
+        <ion-item><span class="item-title">品牌</span><div item-right>{{businfo.brand}}</div></ion-item>
+        <ion-item><span class="item-title">颜色</span><div item-right>{{businfo.color}}</div></ion-item>
+    </div>
+
+</ion-content>

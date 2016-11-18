@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-navbar no-border-bottom>
+        <ion-title>
+            详情
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="detail">
+
+    <ion-slides>
+        <ion-slide *ngFor="let item of driverList; let i=index">
+            <div class ="header-avatar">
+                <img src="assets/img/tx.png">
+                <p>{{item.driverName}}</p>
+                <ion-badge color="yellow">{{i+1}}/2</ion-badge>
+            </div>
+    
+            <ion-list class="item-list" no-lines>
+                <ion-item>
+                    <span class="item-title">所属公司</span> <div item-right>{{item.departName}}</div>
+                </ion-item>
+                <ion-item>
+                    <span class="item-title">工号</span> <div item-right>{{item.driverNo}}</div>
+                </ion-item>
+                <ion-item>
+                    <span class="item-title">联系电话</span> <div item-right>{{item.driverPhone}}</div>
+                </ion-item>
+            </ion-list>
+    
+            <ion-item-divider light></ion-item-divider>
+
+            <ion-item tappable detail-push (click)="onClickTrafficViolation()">交通违章 <div item-right>{{item.illegalCount}}</div></ion-item>
+            <ion-item tappable detail-push (click)="onCLickViolation()">运营违规 <div item-right>{{item.violationCount}}</div></ion-item>
+        </ion-slide>
+    </ion-slides>
+
+</ion-content>

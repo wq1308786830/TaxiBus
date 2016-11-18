@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            完成班次
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="busdriver-completetask">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+    <div class="task-item" *ngFor="let task of completeTasks">
+        <ion-row>
+            <ion-col>{{task.startSite}}</ion-col>
+            <ion-col>--------></ion-col>
+            <ion-col>{{task.endSite}}</ion-col>
+            <ion-col><span style.color={{getTaskCor(task)}}>{{task.realCostTime}}</span></ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>{{task.realRunTime}}</ion-col>
+            <ion-col> </ion-col>
+            <ion-col>{{task.realArriveTime}}</ion-col>
+            <ion-col>
+                <span class="diff-time"
+                style.display={{getDiffTimeDisplay(task)}}
+                style.color={{getTaskCor(task)}}
+                style.border-color={{getTaskCor(task)}}>{{getDiffTime(task)}}</span>
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-content>

@@ -1,0 +1,23 @@
+.busadmin-searchresult {
+  background: transparent;
+
+  .search-listlayer {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+  }
+  .ion-ios-search-list {
+    content: url("../assets/img/sd.png");
+    min-height: 18px;
+    height: 18px;
+    width: 24px;
+  }
+
+  .ion-ios-search-list-gray {
+    content: url("../assets/img/sd12.png");
+    min-height: 18px;
+    height: 18px;
+    width: 24px;
+  }
+}

@@ -1,0 +1,60 @@
+.busadmin-detail {
+    background-color: #FAFAFA;
+
+    .header-info {
+        background-color: #FFFFFF;
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        .station-info {
+            width: 100%;
+            font-size: 25px;
+            line-height: 40px;
+            text-align: center;
+            padding-bottom: 10px;
+        }
+
+        .speed-info {
+            display: block;
+            width: 100%;
+            text-align: center;
+
+            img {
+                width: 20px;
+                height: 20px;
+                vertical-align: middle;
+            }
+
+            .number-info{
+                color: dodgerblue;
+            }
+        }
+    }
+
+    ion-grid {
+        background-color: #FFFFFF;
+        .item-box-top-right {
+            padding: 25px 10px 25px 10px;
+            text-align: center;
+            line-height: 25px;
+            border-top: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+        }
+    
+        .item-box-top {
+            padding: 25px 10px 25px 10px;
+            text-align: center;
+            line-height: 25px;
+            border-top: 1px solid #ddd;
+        }
+    }
+
+    .item-list {
+        margin-top: 10px;
+        padding: 0px;
+    }
+
+    .item-title {
+        color: gray;
+    }
+}

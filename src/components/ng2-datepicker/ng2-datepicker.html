@@ -1,0 +1,58 @@
+<div class="picker-container">
+    <ion-segment [(ngModel)]="datetype">
+        <ion-segment-button value="month">
+            按月
+        </ion-segment-button>
+        <ion-segment-button value="year">
+            按年
+        </ion-segment-button>
+        <ion-segment-button value="cumtom">
+            自定义
+        </ion-segment-button>
+    </ion-segment>
+
+    <div [ngSwitch]="datetype">
+        <div class="month-container" *ngSwitchCase="'month'">
+            <ion-row>
+                <ion-col *ngFor="let month of months1" style="padding:0px;">
+                    <button ion-button block small clear [color]="getMonthColor(month)" (click)="onCLickMonth(month)">{{month}}</button>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col *ngFor="let month of months2" style="padding:0px;">
+                    <button ion-button block small clear [color]="getMonthColor(month)" (click)="onCLickMonth(month)">{{month}}</button>
+                </ion-col>
+            </ion-row>
+        </div>
+
+        <div class="year-container" *ngSwitchCase="'year'">
+            <ion-row>
+                <ion-col *ngFor="let year of years1" style="padding:0px;">
+                    <button ion-button block small clear [color]="getYearColor(year)" (click)="onClickYear(year)">{{year}}</button>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col *ngFor="let year of years2" style="padding:0px;">
+                    <button ion-button block small clear [color]="getYearColor(year)" (click)="onClickYear(year)">{{year}}</button>
+                </ion-col>
+            </ion-row>
+        </div>
+
+        <div class="costom-container" *ngSwitchCase="'cumtom'">
+            <ion-item>
+                <ion-label>开始时间</ion-label>
+                <ion-datetime displayFormat="YYYY年M月D日" pickerFormat="YYYY M D" [(ngModel)]="startDay">
+                </ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label>结束时间</ion-label>
+                <ion-datetime displayFormat="YYYY年M月D日 " pickerFormat="YYYY M D" [(ngModel)]="endDay">
+                </ion-datetime>
+            </ion-item>
+            <ion-row>
+                <ion-col><button ion-button block clear (click)="onClickClear()">清空</button></ion-col>
+                <ion-col><button ion-button block clear (click)="onClickOk()">确定</button></ion-col>
+            </ion-row>
+        </div>
+    </div>
+</div>

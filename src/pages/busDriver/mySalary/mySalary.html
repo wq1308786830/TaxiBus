@@ -1,0 +1,121 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            我的
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="busdriver-mysalary">
+  <!--<bird-dateselect (datePickCB)="datePickRes($event)"></bird-dateselect>-->
+    <div class="header-avatar">
+        <img src="assets/img/tx.png">
+        <p>实发工资</p>
+        <p>￥{{mySalaryInfo.realSalaryAmount}}</p>
+    </div>
+
+    <div class="main-item" tappable (click)="onClickItem($event)">
+        <ion-icon name="arrow-forward" class="item-forward left-item"></ion-icon>
+        <ion-icon name="arrow-down" class="item-down left-item"></ion-icon>
+        <span>加项</span>
+        <ion-badge class="right-item">+{{mySalaryInfo.addAmount}}</ion-badge>
+    </div>
+
+    <div class="sub-list">
+        <div class="sub-item">
+            <div>基本工资</div>
+            <div class="right-item">{{mySalaryInfo.basicSalary}}</div>
+        </div>
+        <div class="sub-item">
+            <div>绩效工资</div>
+            <div class="right-item">{{mySalaryInfo.meritSalary}}</div>
+        </div>
+        <div class="sub-item">
+            <div>加班工资</div>
+            <div class="right-item">{{mySalaryInfo.overTimeSalary}}</div>
+        </div>
+        <div class="sub-item">
+            <div>夜班工资</div>
+            <div class="right-item">{{mySalaryInfo.nightSalary}}</div>
+        </div>
+        <div class="sub-item">
+            <div>副食工资</div>
+            <div class="right-item">{{mySalaryInfo.subsidies}}</div>
+        </div>
+        <div class="sub-item">
+            <div>节超油</div>
+            <div class="right-item">{{mySalaryInfo.oilSection}}</div>
+        </div>
+        <div class="sub-item">
+            <div>节超料</div>
+            <div class="right-item">{{mySalaryInfo.materialSection}}</div>
+        </div>
+        <div class="sub-item">
+            <div>岗位补贴</div>
+            <div class="right-item">{{mySalaryInfo.postSubsidy}}</div>
+        </div>
+        <div class="sub-item">
+            <div>月奖金</div>
+            <div class="right-item">{{mySalaryInfo.monthAward}}</div>
+        </div>
+        <div class="sub-item">
+            <div>季度奖</div>
+            <div class="right-item">{{mySalaryInfo.quarterAward}}</div>
+        </div>
+        <div class="sub-item">
+            <div>全勤奖</div>
+            <div class="right-item">{{mySalaryInfo.fulltimeAward}}</div>
+        </div>
+        <div class="sub-item">
+            <div>降温费</div>
+            <div class="right-item">{{mySalaryInfo.coolFee}}</div>
+        </div>
+        <div class="sub-item">
+            <div>过节费</div>
+            <div class="right-item">{{mySalaryInfo.festivalFee}}</div>
+        </div>
+        <div class="sub-item">
+            <div>其他</div>
+            <div class="right-item">{{mySalaryInfo.otherFee}}</div>
+        </div>
+    </div>
+
+    <div class="main-item" tappable (click)="onClickItem($event)">
+        <ion-icon name="arrow-forward" class="item-forward left-item"></ion-icon>
+        <ion-icon name="arrow-down" class="item-down left-item"></ion-icon>
+        <span>减项</span>
+        <ion-badge class="right-item" color="green">-{{mySalaryInfo.subAmount}}</ion-badge>
+    </div>
+
+    <div class="sub-list">
+        <div class="sub-item">
+            <div>养老金</div>
+            <div class="right-item">{{mySalaryInfo.pension}}</div>
+        </div>
+        <div class="sub-item">
+            <div>住房公积金</div>
+            <div class="right-item">{{mySalaryInfo.houseMoney}}</div>
+        </div>
+        <div class="sub-item">
+            <div>扣款</div>
+            <div class="right-item">{{mySalaryInfo.deduction}}</div>
+        </div>
+        <div class="sub-item">
+            <div>个税</div>
+            <div class="right-item">{{mySalaryInfo.tax}}</div>
+        </div>
+        <div class="sub-item">
+            <div>借款</div>
+            <div class="right-item">{{mySalaryInfo.borrowMoney}}</div>
+        </div>
+        <div class="sub-item">
+            <div>违章</div>
+            <div class="right-item">{{mySalaryInfo.illegalMoney}}</div>
+        </div>
+        <div class="sub-item">
+            <div>其他</div>
+            <div class="right-item">{{mySalaryInfo.other}}</div>
+        </div>
+    </div>
+
+</ion-content>

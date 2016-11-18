@@ -1,0 +1,105 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>
+			运营
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="busadmin-analyze">
+	<ion-item class="select-analyze-type">
+		<ion-select [(ngModel)]="dataType" interface="action-sheet">
+			<ion-option value="yunying" selected="true">运营分析</ion-option>
+			<!--<ion-option value="keyun">客运分析</ion-option>-->
+			<ion-option value="service">服务分析</ion-option>
+			<ion-option value="security">安全分析</ion-option>
+		</ion-select>
+	</ion-item>
+
+	<ion-row class="date-type-container">
+		<ion-col width-75>
+			<bird-dateselect (datePickCB)="datePickRes($event)"></bird-dateselect>
+		</ion-col>
+		<ion-col width-25>
+			<ion-item no-lines>
+				<ion-select [(ngModel)]="curDepartmentId" interface="action-sheet" (ionChange)="onDepartmentSel($event)">
+					<ion-option selected="true" value="">全部</ion-option>
+					<ion-option *ngFor="let item of departments" value={{getnDepartmentValue(item)}}>{{item.departname}}</ion-option>
+				</ion-select>
+			</ion-item>
+		</ion-col>
+	</ion-row>
+
+	<div class="content-container" [ngSwitch]="dataType">
+		<!-- 运营分析 -->
+		<div *ngSwitchCase="'yunying'">
+			<ng2-echart #operationchart [options]="eChartOptions"></ng2-echart>
+			<ion-grid>
+				<ion-row center class="single-row">
+					<ion-col class="item-info">完成总班次</ion-col>
+					<ion-col class="item-info red">{{operationInfo.completeTotalCount}}/{{operationInfo.planTotalCount}}次</ion-col>
+				</ion-row>
+				<ion-row center>
+					<ion-col class="item-box-top-right"><span>{{operationInfo.readyCount}}</span><br><br>正点班次:次</ion-col>
+					<ion-col class="item-box-top-right"><span>{{operationInfo.lateCount}}</span><br><br>超时班次:次</ion-col>
+					<ion-col class="item-box-top"><span>{{operationInfo.earlyCount}}</span><br><br>提前班次:次</ion-col>
+				</ion-row>
+				<ion-row center>
+					<ion-col class="item-box-top-right"><span>{{operationInfo.completeKM}}</span><br><br>运营里程:km</ion-col>
+					<ion-col class="item-box-top-right"><span>{{operationInfo.emptyKM}}</span><br><br>空驶里程:km</ion-col>
+					<ion-col class="item-box-top"><span>{{operationInfo.completeTime}}</span><br><br>运营工时:h</ion-col>
+				</ion-row>
+			</ion-grid>
+		</div>
+
+		<!-- 客运分析 -->
+		<!--<div class="analyze-maplayer" *ngSwitchCase="'keyun'">
+			<ng2-baidu-map [options]="mapOptions"></ng2-baidu-map>
+		</div>-->
+
+		<!-- 服务分析 -->
+		<div *ngSwitchCase="'service'">
+			<ng2-echart [options]="eChartOptions"></ng2-echart>
+			<ion-grid *ngSwitchCase="'service'">
+				<ion-row center class="single-row">
+					<ion-col class="item-info">投诉建议总数</ion-col>
+					<ion-col class="item-info red">188次</ion-col>
+				</ion-row>
+
+				<ion-row center>
+					<ion-col class="item-box-top-right"><span>23</span><br><br>处理完结:次</ion-col>
+					<ion-col class="item-box-top-right"><span>20</span><br><br>处理中:次</ion-col>
+					<ion-col class="item-box-top"><span>53%</span><br><br>完结率</ion-col>
+				</ion-row>
+				<ion-row center>
+					<ion-col class="item-box-top-right"><span>382</span><br><br>投诉数:次</ion-col>
+					<ion-col class="item-box-top-right"><span>50</span><br><br>完结数:次</ion-col>
+					<ion-col class="item-box-top"><span>36</span><br><br>建议数:次</ion-col>
+				</ion-row>
+			</ion-grid>
+		</div>
+
+		<!-- 安全分析 -->
+		<div *ngSwitchCase="'security'">
+			<ng2-echart [options]="eChartOptionsSecurity"></ng2-echart>
+			<ion-grid>
+				<ion-row center>
+					<ion-col class="item-info"><p class="green">223</p>月违规:次</ion-col>
+					<ion-col class="item-info"><p class="red">111</p>月违规:次违章总数</ion-col>
+				</ion-row>
+
+				<ion-row center>
+					<ion-col class="item-box-top-right"><span>237</span><br><br>超速</ion-col>
+					<ion-col class="item-box-top-right"><span>20</span><br><br>越线</ion-col>
+					<ion-col class="item-box-top"><span>112</span><br><br>溜站</ion-col>
+				</ion-row>
+				<ion-row center>
+					<ion-col class="item-box-top-right"><span>82%</span><br><br>违反信号规定</ion-col>
+					<ion-col class="item-box-top-right"><span>50%</span><br><br>违反信号规定</ion-col>
+					<ion-col class="item-box-top"><span>48%</span><br><br>违反信号规定</ion-col>
+				</ion-row>
+			</ion-grid>
+		</div>
+	</div>
+
+</ion-content>

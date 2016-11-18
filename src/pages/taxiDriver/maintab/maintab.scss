@@ -1,0 +1,43 @@
+.main-tab-taxi {
+  .tabs-ios .tab-button-icon {
+    min-width: 32px;
+    height: 50px;
+    font-size: 30px;
+  }
+
+  .ion-ios-tab-safe {
+    content: url("../assets/img/dbl_l_aq.png");
+    width: 32px;
+    height: 50px;
+  }
+
+  .ion-ios-tab-safe-outline {
+    content: url("../assets/img/dbl_a_aq.png");
+    width: 32px;
+    height: 50px;
+  }
+
+  .ion-ios-tab-yunying {
+    content: url("../assets/img/dbl_l_yy.png");
+    width: 32px;
+    height: 50px;
+  }
+
+  .ion-ios-tab-yunying-outline {
+    content: url("../assets/img/dbl_a_yy.png");
+    width: 32px;
+    height: 50px;
+  }
+
+  .ion-ios-tab-mine {
+    content: url("../assets/img/dbl_l_w.png");
+    width: 32px;
+    height: 50px;
+  }
+
+  .ion-ios-tab-mine-outline {
+    content: url("../assets/img/dbl_a_w.png");
+    width: 32px;
+    height: 50px;
+  }
+}

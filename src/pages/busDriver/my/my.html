@@ -1,0 +1,24 @@
+<ion-content class="busdriver-my">
+    <div class ="header-avatar">
+      <div class="top-right" (click)="onClickNotices()">
+          <img src="assets/img/msg.png">
+      </div>
+        <img src="assets/img/tx.png">
+        <p>{{ driverInfo.drivername }}</p>
+        <p>车牌号：{{ driverInfo.busno }}</p>
+    </div>
+    <ion-list>
+        <ion-item tappable (click)="onClickMySalary()">
+            <ion-avatar item-left>
+                <img src="assets/img/xz_a.png">
+            </ion-avatar>
+            <h2>我的薪资</h2>
+        </ion-item>
+        <ion-item tappable (click)="onClickAlertSetting()">
+            <ion-avatar item-left>
+                <img src="assets/img/jg_a.png">
+            </ion-avatar>
+            <h2>警告设置</h2>
+        </ion-item>
+    </ion-list>
+</ion-content>

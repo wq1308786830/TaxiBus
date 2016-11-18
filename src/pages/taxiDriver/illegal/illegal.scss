@@ -1,0 +1,43 @@
+.taxidriver-illegal {
+
+  .traffic-violation-item {
+    position: relative;
+
+    padding: 10px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #aaaaaa;
+
+    .item-result {
+      display: inline-block;
+      margin: 8px 8px;
+      padding: 3px 8px;
+      text-align: center;
+
+      color: #ff2288;;
+
+      border-style: solid;
+      border-width: 1px;
+      border-color: #ff2288;
+      border-radius: 20px;
+    }
+
+    .item-title {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #a1a1a1;
+    }
+
+    .item-content {
+      font-size: 15px;
+    }
+
+    .item-image {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      height: 70px;
+      width: 70px;
+    }
+  }
+}

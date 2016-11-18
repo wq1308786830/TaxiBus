@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      运营
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button color="royal" class="tips-pop" (click)="onClickNotices()"></button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="busdriver-operator">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <bird-dateselect (datePickCB)="datePickRes($event)"></bird-dateselect>
+
+  <div class="content-container">
+    <!-- 运营分析 -->
+    <ng2-echart #operationchart [options]="eChartOptions"></ng2-echart>
+    <ion-grid>
+      <ion-row center tappable (click)="onClickComplete()" class="single-row">
+        <ion-col class="item-info">完成总班次</ion-col>
+        <ion-col class="item-info"><span class="red">{{operationInfo.completeTotalCount}}次</span> <ion-icon name="arrow-forward"></ion-icon></ion-col>
+      </ion-row>
+      <ion-row center>
+        <ion-col class="item-box-top-right"><span>{{operationInfo.rightCount}}</span><br><br>正点班次:次</ion-col>
+        <ion-col class="item-box-top-right"><span>{{operationInfo.longCount}}</span><br><br>超时班次:次</ion-col>
+        <ion-col class="item-box-top"><span>{{operationInfo.shortCount}}</span><br><br>提前班次:次</ion-col>
+      </ion-row>
+      <ion-row center>
+        <ion-col class="item-box-top-right"><span>{{operationInfo.operatingKM}}</span><br><br>运营里程:km</ion-col>
+        <ion-col class="item-box-top-right"><span>{{operationInfo.deadheadKM}}</span><br><br>空驶里程:km</ion-col>
+        <ion-col class="item-box-top"><span>{{operationInfo.operatingDuration}}</span><br><br>运营工时:h</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

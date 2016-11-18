@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      排班
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button color="royal" class="tips-pop" (click)="onClickNotices()"></button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="busdriver-schedule">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="item-header">
+    <div class="list-item-header-icon"></div>未完成计划
+  </div>
+  <div class="item-doing-task" tappable  *ngFor="let doingTask of myTasks.doingTasks">
+    <ion-item no-lines (click)="showAlert(doingTask)">
+      <h2>{{doingTask.realRunTime.substr(11, 5)}} • <span class="light-gray">{{doingTask.startSite}}</span></h2>
+      <p>→ {{doingTask.endSite}}</p>
+      <div item-right class="green">已发车</div>
+    </ion-item>
+    <div class="site-info">
+      <ion-row>
+        <ion-col class="info-box">
+          <div><span class="title blue">{{doingTask.currentSite}}</span><br><span class="light-gray">当前站点</span></div>
+        </ion-col>
+        <ion-col class="info-box">
+          <div><span class="title blue">{{doingTask.frontDistance}}</span><br><span class="light-gray">距离前车:m</span></div>
+        </ion-col>
+        <ion-col class="info-box">
+          <div><span class="title blue">{{doingTask.backDistance}}</span><br><span class="light-gray">距离后车:m</span></div>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+  <ion-item no-lines tappable *ngFor="let readyTask of myTasks.readyTasks" (click)="showAlert(readyTask)">
+    <h2>{{readyTask.planRunTime.substr(11, 5)}} • <span class="light-gray">{{readyTask.startSite}}</span></h2>
+    <p>→ {{readyTask.endSite}}</p>
+    <div item-right>等待发车</div>
+  </ion-item>
+
+  <div class="item-header">
+    <div class="list-item-header-icon"></div>已完成计划
+  </div>
+  <ion-item no-lines tappable *ngFor="let completeTask of myTasks.completeTasks" (click)="showAlert(completeTask)">
+    <h2>{{completeTask.realRunTime.substr(11, 5)}} • <span class="light-gray">{{completeTask.startSite}}</span></h2>
+    <p>→ {{completeTask.endSite}}</p>
+    <div item-right class="red">已完成</div>
+  </ion-item>
+</ion-content>

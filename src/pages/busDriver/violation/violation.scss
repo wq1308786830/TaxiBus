@@ -1,0 +1,30 @@
+
+.taxi-driver-violation {
+
+  .violation-item {
+    position: relative;
+
+    padding: 10px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #aaaaaa;
+
+    .item-title {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #a1a1a1;
+    }
+
+    .item-content {
+      font-size: 15px;
+    }
+
+    .item-image {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 70px;
+      height: 70px;
+    }
+  }
+}

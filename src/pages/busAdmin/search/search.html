@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-searchbar placeholder="请输入车牌号／公司名／公交路线等" (ionInput)="onInsertText($event)"></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button (click)="onCLickSearch()">搜索</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="busadmin-search">
+
+  <div class="depart-container">
+    <div class="left-container">
+      <ion-item no-lines *ngFor="let depart of leftList">
+        <button ion-button round (click)="onClickDepart(depart)">{{depart.departname}}</button>
+      </ion-item>
+    </div>
+
+    <div class="right-container">
+      <ion-item no-lines *ngFor="let depart of rightList">
+        <button ion-button round (click)="onClickDepart(depart)">{{depart.departname}}</button>
+      </ion-item>
+    </div>
+  </div>
+</ion-content>
