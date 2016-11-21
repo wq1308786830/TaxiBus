@@ -89,6 +89,13 @@ export class BusAdminBusList implements OnInit {
 
 
   doInfinite(ev) {
+    this.busAdminService.getBusAndViolationsByDepartId(this.curDepartmentId, ++this.curPage, 50).subscribe(data => {
+      if (data) {
+        for (let i of data)
+        this.buslist.push(i);
+      }
+      ev.complete();
+    });
   }
 
   onCLickBack() {

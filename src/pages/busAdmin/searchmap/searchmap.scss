@@ -1,20 +1,50 @@
 .busadmin-searchmap {
 
-    .search-maplayer {
-        display: block;
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
+  .search-maplayer {
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 50%;
+    z-index: -1;
 
-        .map-cover-footer{
-            display: block;
-            position: absolute;
-            bottom: 0px;
-            height: 50px;
-            width: 100%;
-        }
+    .map-cover-footer {
+      display: block;
+      position: absolute;
+      bottom: 0px;
+      height: 50px;
+      width: 100%;
     }
+  }
+
+  .search-listlayer {
+    background: transparent;
+    position: absolute;
+    height: 50%;
+    width: 100%;
+    bottom: 0;
+    overflow: scroll;
+    .ion-page.show-page {
+      background-color: rgba(0,0,0,0.5);
+    }
+    .list-ios {
+      background-color: #fff;
+      height: 100%;
+      margin: 0;
+    }
+    .ion-ios-search-list {
+      content: url("../assets/img/sd.png");
+      min-height: 18px;
+      height: 18px;
+      width: 24px;
+    }
+
+    .ion-ios-search-list-gray {
+      content: url("../assets/img/sd12.png");
+      min-height: 18px;
+      height: 18px;
+      width: 24px;
+    }
+  }
 }

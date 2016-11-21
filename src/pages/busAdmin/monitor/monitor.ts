@@ -129,7 +129,7 @@ export class BusAdminMonitor implements OnInit, OnDestroy, AfterViewInit {
           rotation: 90 - parseFloat(entry.gpsinfo.direction),
           icon: {
             url: "assets/img/bus.png",
-            size: { width: 60, height: 30 }
+            size: { width: 40, height: 20 }
           }
         };
 

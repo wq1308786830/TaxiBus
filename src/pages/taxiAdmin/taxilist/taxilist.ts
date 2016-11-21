@@ -12,22 +12,25 @@ export class TaxiAdminTaxilist implements OnInit {
   listType = 'A112';
   public keyunTaxis: FaultCountBean[] = [];
   public jidaTaxis: FaultCountBean[] = [];
-
+  public curPageJida: number;
+  public curPageKeyun: number;
 
   constructor(public navCtrl: NavController,
               public loadingController: LoadingController,
               public taxiAdminService: TaxiAdminService,
               public  theApp: App) {
+    this.curPageJida = 0;
+    this.curPageKeyun = 0;
   }
 
   ngOnInit() {
-    this.taxiAdminService.getCarNoAndFaultCountByDepartmentId("A111", 0, 50).subscribe(taxiList => {
+    this.taxiAdminService.getCarNoAndFaultCountByDepartmentId("A111", this.curPageJida, 50).subscribe(taxiList => {
       if (taxiList) {
         this.jidaTaxis = taxiList;
       }
     });
 
-    this.taxiAdminService.getCarNoAndFaultCountByDepartmentId("A112", 0, 50).subscribe(taxiList => {
+    this.taxiAdminService.getCarNoAndFaultCountByDepartmentId("A112", this.curPageKeyun, 50).subscribe(taxiList => {
       if (taxiList) {
         this.keyunTaxis = taxiList;
       }
@@ -59,6 +62,26 @@ export class TaxiAdminTaxilist implements OnInit {
         this.keyunTaxis = taxiList;
       }
       refresher.complete();
+    });
+  }
+
+  doInfinite(ev) {
+    this.taxiAdminService.getCarNoAndFaultCountByDepartmentId("A111", ++this.curPageJida, 50).subscribe(taxiList => {
+      if (taxiList) {
+        for (let i of taxiList) {
+          this.jidaTaxis.push(i);
+        }
+      }
+      ev.complete();
+    });
+
+    this.taxiAdminService.getCarNoAndFaultCountByDepartmentId("A112", ++this.curPageKeyun, 50).subscribe(taxiList => {
+      if (taxiList) {
+        for (let j of taxiList) {
+          this.keyunTaxis.push(j);
+        }
+      }
+      ev.complete();
     });
   }
 }

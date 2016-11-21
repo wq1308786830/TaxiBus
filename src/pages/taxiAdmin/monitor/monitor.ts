@@ -125,16 +125,31 @@ export class TaxiAdminMonitor implements OnInit, OnDestroy, AfterViewInit {
       if (entry.marker) {
         entry.marker.setRotation(90 - parseFloat(entry.gpsinfo.direction));
         entry.marker.setPosition(new GoogleMapsLatLng(entry.gpsinfo.latitude, entry.gpsinfo.longitude));
-      } else {
-        let markerOptions: GoogleMapsMarkerOptions = {
-          position: new GoogleMapsLatLng(entry.gpsinfo.latitude, entry.gpsinfo.longitude),
-          title: entry.gpsinfo.carNo,
-          rotation: 90 - parseFloat(entry.gpsinfo.direction),
-          icon: {
-            url: "assets/img/taxi.png",
-            size: { width: 60, height: 30 }
-          }
-        };
+      } else  {
+        let markerOptions: GoogleMapsMarkerOptions = {};
+        if (entry.gpsinfo.status == "空车") {
+          markerOptions = {
+            position: new GoogleMapsLatLng(entry.gpsinfo.latitude, entry.gpsinfo.longitude),
+            title: entry.gpsinfo.carNo,
+            rotation: 90 - parseFloat(entry.gpsinfo.direction),
+            icon: {
+              url: "assets/img/taxi.png",       //todo:空车图片
+              size: { width: 40, height: 20 }
+            }
+          };
+        } else {
+          markerOptions = {
+            position: new GoogleMapsLatLng(entry.gpsinfo.latitude, entry.gpsinfo.longitude),
+            title: entry.gpsinfo.carNo,
+            rotation: 90 - parseFloat(entry.gpsinfo.direction),
+            icon: {
+              url: "assets/img/taxi.png",
+              size: { width: 40, height: 20 }
+            }
+          };
+        }
+
+
 
         this.gMap.addMarker(markerOptions).then((marker: GoogleMapsMarker) => {
           entry.marker = marker;
