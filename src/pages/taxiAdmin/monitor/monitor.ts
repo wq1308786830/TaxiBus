@@ -36,7 +36,7 @@ export class TaxiAdminMonitor implements OnInit, OnDestroy, AfterViewInit {
     this.platform.ready().then(() => {
       this.gMap = new GoogleMap(this.googleMap.nativeElement, { gestures: { scroll: true, rotate: false, zoom: true } });
       if (this.gMap._objectInstance) {
-        this.gMap.setCenter(new GoogleMapsLatLng(31.43, 119.48));
+        this.gMap.setCenter(new GoogleMapsLatLng(31.407167, 119.477988));
         this.gMap.setZoom(15);
         this.gMap.one(GoogleMapsEvent.MAP_READY).then(() => {
           this.bMapReady = true;

@@ -1,0 +1,62 @@
+.road-ev-detail {
+  background-color: #FAFAFA;
+
+  .info-header-item {
+    width: 100%;
+    padding-top: 20px;
+
+    img {
+      display: block;
+      width: 50px;
+      height: 50px;
+      margin: auto;
+    }
+
+    p {
+      text-align: center;
+    }
+  }
+
+  .item-list {;
+    padding: 0;
+  }
+
+  .item-title {
+    color: gray;
+  }
+  ion-item-divider {
+    height: 10px;
+  }
+
+  .list-ios > .item-block:last-child, .list-ios > .item-block:first-child {
+    border: none;
+  }
+
+  .item-ios p:nth-of-type(2) {
+    color: #000;
+  }
+
+  ion-list {
+    background-color: #eee;
+    ion-item {
+      align-items: flex-end;
+    }
+  }
+
+  .img-container {
+    background-color: #fff;
+    margin-top: 8px;
+    padding: 1px 16px;
+    color: #7f7f7f;
+    ion-label {
+      font-size: 1.6rem;
+    }
+  }
+  .top8 {
+    margin-top: 8px;
+    .label-ios p{
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+  }
+}

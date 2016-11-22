@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <ion-title>
+      事件上报
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="road-report">
+  <ion-list no-lines>
+    <ion-item>
+      <ion-label>巡查分类</ion-label>
+      <ion-select [(ngModel)]="vehicle">
+        <ion-option value="nes">NES</ion-option>
+        <ion-option value="n64">Nintendo64</ion-option>
+        <ion-option value="ps">PlayStation</ion-option>
+        <ion-option value="genesis">Sega Genesis</ion-option>
+        <ion-option value="saturn">Sega Saturn</ion-option>
+        <ion-option value="snes">SNES</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>巡查项目</ion-label>
+      <ion-select [(ngModel)]="vehicle">
+        <ion-option value="nes">NES</ion-option>
+        <ion-option value="n64">Nintendo64</ion-option>
+        <ion-option value="ps">PlayStation</ion-option>
+        <ion-option value="genesis">Sega Genesis</ion-option>
+        <ion-option value="saturn">Sega Saturn</ion-option>
+        <ion-option value="snes">SNES</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>所属路线</ion-label>
+      <ion-select [(ngModel)]="vehicle">
+        <ion-option value="nes">NES</ion-option>
+        <ion-option value="n64">Nintendo64</ion-option>
+        <ion-option value="ps">PlayStation</ion-option>
+        <ion-option value="genesis">Sega Genesis</ion-option>
+        <ion-option value="saturn">Sega Saturn</ion-option>
+        <ion-option value="snes">SNES</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>巡查方向</ion-label>
+      <ion-select [(ngModel)]="vehicle">
+        <ion-option value="nes">NES</ion-option>
+        <ion-option value="n64">Nintendo64</ion-option>
+        <ion-option value="ps">PlayStation</ion-option>
+        <ion-option value="genesis">Sega Genesis</ion-option>
+        <ion-option value="saturn">Sega Saturn</ion-option>
+        <ion-option value="snes">SNES</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label class="row-multi">桩号</ion-label>
+      <ion-input type="text" value="" class="start"></ion-input>
+      <span>+</span>
+      <ion-input type="text" value="" class="end"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <textarea [(ngModel)]="reportContent" cols="30" rows="10" placeholder="请填写交办内容"></textarea>
+    </ion-item>
+
+    <ion-item>
+      <textarea [(ngModel)]="describe" cols="30" rows="10" placeholder="请填写案件描述"></textarea>
+    </ion-item>
+
+
+    <div class="img-container">
+      <ion-label>照片上传</ion-label>
+      <ion-grid>
+        <ion-row>
+          <ion-col width-33><img src="assets/img/road/event_list_default_img.png"></ion-col>
+          <ion-col width-33><img src="assets/img/road/event_list_default_img.png"></ion-col>
+          <ion-col width-33><img src="assets/img/road/add_img.png"></ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+  </ion-list>
+  <div style="padding: 20px 16px">
+    <button ion-button block>提交</button>
+  </div>
+
+</ion-content>

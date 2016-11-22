@@ -93,6 +93,16 @@ import {BusDriverViolation} from "../pages/busDriver/violation/violation";
  * RealMonitor
  */
 import { RealMonitorMainpage } from '../pages/realMonitor/mainPage/mainPage';
+import {RoadSupportPersonalCenter} from "../pages/roadSupport/personalCenter/personalCenter";
+import {RoadSupportPatrolManage} from "../pages/roadSupport/patrolManage/patrolManage";
+import {RoadSupportPolicyRule} from "../pages/roadSupport/policyRule/policyRule";
+import {RoadSupportEvManager} from "../pages/roadSupport/eventManager/eventManager";
+import {RoadSupportEvReport} from "../pages/roadSupport/eventReport/eventReport";
+import {RoadSupportMainTab} from "../pages/roadSupport/mainTab/mainTab";
+import {RoadSupportRegister} from "../pages/roadSupport/register/register";
+import {RoadSupportEvDetail} from "../pages/roadSupport/eventDetail/eventDetail";
+import {RoadSupportRuleDetail} from "../pages/roadSupport/ruleDetail/ruleDetail";
+import {RoadSupportPatrolDetail} from "../pages/roadSupport/patrolDetail/patrolDetail";
 
 
 @NgModule({
@@ -155,7 +165,18 @@ import { RealMonitorMainpage } from '../pages/realMonitor/mainPage/mainPage';
     BusDriverAlertSetting,
     BusDriverMysalary,
     BusDriverNotices,
-    RealMonitorMainpage
+    RealMonitorMainpage,
+
+    RoadSupportPersonalCenter,
+    RoadSupportPatrolManage,
+    RoadSupportPolicyRule,
+    RoadSupportEvManager,
+    RoadSupportEvReport,
+    RoadSupportMainTab,
+    RoadSupportRegister,
+    RoadSupportEvDetail,
+    RoadSupportRuleDetail,
+    RoadSupportPatrolDetail
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -224,7 +245,19 @@ import { RealMonitorMainpage } from '../pages/realMonitor/mainPage/mainPage';
     BusDriverAlertSetting,
     BusDriverMysalary,
     BusDriverNotices,
-    RealMonitorMainpage
+
+    RealMonitorMainpage,
+
+    RoadSupportPersonalCenter,
+    RoadSupportPatrolManage,
+    RoadSupportPolicyRule,
+    RoadSupportEvManager,
+    RoadSupportEvReport,
+    RoadSupportMainTab,
+    RoadSupportRegister,
+    RoadSupportRuleDetail,
+    RoadSupportEvDetail,
+    RoadSupportPatrolDetail
   ],
   providers: [HNBridge, CommonService, LoginService, BusAdminService, TaxiDriverService, TaxiAdminService, BusDriverService, DropdownController]
 })

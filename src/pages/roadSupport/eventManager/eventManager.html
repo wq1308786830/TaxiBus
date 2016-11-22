@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <ion-title>
+      事件管理
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="road-ev-manage">
+  <div padding>
+    <ion-segment [(ngModel)]="items">
+      <ion-segment-button value="allItems">
+        全部
+      </ion-segment-button>
+      <ion-segment-button value="doneItems">
+        已完成
+      </ion-segment-button>
+      <ion-segment-button value="doingItem">
+        进行中
+      </ion-segment-button>
+      <ion-segment-button value="unItems">
+        未接受
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="items">
+    <ion-list *ngSwitchCase="'allItems'" no-lines>
+      <ion-item (click)="eventDetail()">
+        <div class="item-content">
+          <div>
+            <ion-thumbnail>
+              <img src="assets/img/road/event_list_default_img.png">
+            </ion-thumbnail>
+            <div>
+              <p><span>巡查分类:</span><span>公路路面管理</span></p>
+              <p><span>接收单位:</span><span>溧阳二中队</span></p>
+              <p><span>巡查员:</span><span>谢东平</span></p>
+            </div>
+          </div>
+          <button ion-button item-right>已完成</button>
+        </div>
+        <div class="item-btm"><span>编号:kl45648676325</span><span>2016-12-12  9:55:55</span></div>
+      </ion-item>
+
+      <ion-item>
+        <div class="item-content">
+          <div>
+            <ion-thumbnail>
+              <img src="assets/img/road/event_list_default_img.png">
+            </ion-thumbnail>
+            <div>
+              <p><span>巡查分类:</span><span>公路路面管理</span></p>
+              <p><span>接收单位:</span><span>溧阳二中队</span></p>
+              <p><span>巡查员:</span><span>谢东平</span></p>
+            </div>
+          </div>
+          <button ion-button item-right>已完成</button>
+        </div>
+        <div class="item-btm"><span>编号:kl45648676325</span><span>2016-12-12  9:55:55</span></div>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'doneItems'">
+      <ion-item>
+        <div class="item-content">
+          <div>
+            <ion-thumbnail>
+              <img src="assets/img/road/event_list_default_img.png">
+            </ion-thumbnail>
+            <div>
+              <p><span>巡查分类:</span><span>公路路面管理</span></p>
+              <p><span>接收单位:</span><span>溧阳二中队</span></p>
+              <p><span>巡查员:</span><span>谢东平</span></p>
+            </div>
+          </div>
+          <button ion-button item-right>已完成</button>
+        </div>
+        <div class="item-btm"><span>编号:kl45648676325</span><span>2016-12-12  9:55:55</span></div>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'doingItem'">
+      <ion-item>
+        <div class="item-content">
+          <div>
+            <ion-thumbnail>
+              <img src="assets/img/road/event_list_default_img.png">
+            </ion-thumbnail>
+            <div>
+              <p><span>巡查分类:</span><span>公路路面管理</span></p>
+              <p><span>接收单位:</span><span>溧阳二中队</span></p>
+              <p><span>巡查员:</span><span>谢东平</span></p>
+            </div>
+          </div>
+          <button ion-button item-right>已完成</button>
+        </div>
+        <div class="item-btm"><span>编号:kl45648676325</span><span>2016-12-12  9:55:55</span></div>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'unItems'">
+      <ion-item>
+        <div class="item-content">
+          <div>
+            <ion-thumbnail>
+              <img src="assets/img/road/event_list_default_img.png">
+            </ion-thumbnail>
+            <div>
+              <p><span>巡查分类:</span><span>公路路面管理</span></p>
+              <p><span>接收单位:</span><span>溧阳二中队</span></p>
+              <p><span>巡查员:</span><span>谢东平</span></p>
+            </div>
+          </div>
+          <button ion-button item-right>已完成</button>
+        </div>
+        <div class="item-btm"><span>编号:kl45648676325</span><span>2016-12-12  9:55:55</span></div>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

@@ -20,6 +20,10 @@ export class TaxiAdminSearch implements OnInit {
   }
 
   onClickKeyun() {
+    let loader = this.loadingController.create({
+      content: "加载中...",
+    });
+    loader.present();
     this.taxiAdminService.getCarNoListByDepartmentId("A112", 0, 50).subscribe(itemList => {
       if (itemList) {
         this.resultList = itemList;
@@ -28,11 +32,16 @@ export class TaxiAdminSearch implements OnInit {
           id: this.searchText,
           data: this.resultList
         }, { animate: false });
+        loader.dismiss();
       }
     });
   }
 
   onClickJida() {
+    let loader = this.loadingController.create({
+      content: "加载中...",
+    });
+    loader.present();
     this.taxiAdminService.getCarNoListByDepartmentId("A111", 0, 50).subscribe(itemList => {
       if (itemList) {
         this.resultList = itemList;
@@ -41,6 +50,7 @@ export class TaxiAdminSearch implements OnInit {
           id: this.searchText,
           data: this.resultList
         }, { animate: false });
+        loader.dismiss();
       }
     });
   }
@@ -50,6 +60,10 @@ export class TaxiAdminSearch implements OnInit {
   }
 
   onCLickSearch() {
+    let loader = this.loadingController.create({
+      content: "加载中...",
+    });
+    loader.present();
     this.taxiAdminService.getCarNoListByCarno(this.searchText, 0, 50).subscribe(itemList => {
       if (itemList && itemList.length > 0) {
         this.resultList = itemList;
@@ -58,6 +72,7 @@ export class TaxiAdminSearch implements OnInit {
           id: this.searchText,
           data: this.resultList
         }, { animate: false });
+        loader.dismiss();
       }
     });
   }
