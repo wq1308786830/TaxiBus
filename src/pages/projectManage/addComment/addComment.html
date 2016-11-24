@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      外勤签到
+      <!--todo:外勤签退-->
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="project-add-comment">
+  <ion-list>
+    <ion-item class="custom">
+      <img src="assets/img/sign2_03.png"><span>签到时间：<span>16:26</span></span>
+    </ion-item>
+    <ion-item class="custom">
+      <img src="assets/img/sign2_03_02.png"><span>签到地点：<span>江苏省溧阳市22号</span></span>
+    </ion-item>
+
+    <ion-item>
+      <textarea placeholder="请填写签到备注" *ngIf="sigin"></textarea>
+      <textarea placeholder="请填写签退备注" *ngIf="!sigin"></textarea>
+    </ion-item>
+    <ion-item class="custom">
+      <span>当前企业：<span>溧阳工程管理处</span></span>
+    </ion-item>
+  </ion-list>
+
+  <div class="single-row">
+    <button ion-button>提交</button>
+  </div>
+</ion-content>
