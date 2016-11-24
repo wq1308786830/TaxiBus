@@ -1,0 +1,65 @@
+.project-file-manage {
+  .choose-date {
+    &:before {
+      content: '';
+      background-image: url("../../assets/img/sign.png");
+      background-repeat: no-repeat;
+      background-size: 22px 22px;
+      background-position: center;
+      height: 22px;
+      width: 22px;
+    }
+  }
+  ion-item.item-ios {
+    margin-top: 0;
+  }
+  .list-ios .item-block .item-inner {
+    border: none;
+  }
+  .location {
+    background-color: #eee;
+  }
+  ion-item {
+    border-bottom: 0.55px #e4e4e4 solid;
+    h3 {
+      margin-top: 8px;
+    }
+    h4 {
+      color: #666;
+    }
+  }
+
+  .grid > ion-row {
+    flex-wrap: wrap;
+    ion-col {
+      padding: 10px 8%;
+      text-align: center;
+    }
+  }
+  .item-head {
+    color: #666;
+  }
+  .list-ios {
+    ion-item.item-block {
+      padding: 0;
+      border: none;
+      div.item-inner {
+        padding: 0;
+        ion-label {
+          margin: 0;
+          ion-list {
+            margin: 0;
+            ion-item.item-block {
+              padding-left: 16px;
+              border-bottom: 0.55px #eee solid;
+              div.item-inner {
+                padding-right: 8px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

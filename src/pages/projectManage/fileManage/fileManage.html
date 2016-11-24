@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      签到
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="project-file-manage">
+  <ion-list>
+    <ion-item>
+      <ion-list>
+        <ion-item class="choose-date">
+          <ion-datetime displayFormat="DDDD YYYY.MM.DD" [(ngModel)]="dateVal"
+                        dayNames="星期日,星期一,星期二,星期三,星期四,星期五,星期六"></ion-datetime>
+          <ion-icon name="arrow-down" item-right></ion-icon>
+        </ion-item>
+      </ion-list>
+    </ion-item>
+    <ion-item>
+      <ion-list>
+        <ion-item class="location">
+          溧阳改造工程
+        </ion-item>
+        <ion-item class="item-head">
+          上传文件<span class="blue">1</span>份
+          <ion-icon name="arrow-forward" item-right></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-grid class="grid">
+            <ion-row>
+              <ion-col width-33>
+                <img src="assets/img/file_03.png">
+                <h3>招标文件.rar</h3>
+                <h4>733kb</h4>
+              </ion-col>
+              <ion-col width-33>
+                <img src="assets/img/file_03.png">
+                <h3>招标文件.rar</h3>
+                <h4>733kb</h4>
+              </ion-col>
+              <ion-col width-33>
+                <img src="assets/img/file_03.png">
+                <h3>招标文件.rar</h3>
+                <h4>733kb</h4>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-list>
+    </ion-item>
+    <ion-item>
+      <ion-list>
+        <ion-item class="location">
+          溧阳小陈庄改造工程
+        </ion-item>
+        <ion-item class="item-head">
+          上传文件<span class="blue">1</span>份
+          <ion-icon name="arrow-forward" item-right></ion-icon>
+        </ion-item>
+        <ion-item (click)="fileDetail()">
+          <ion-grid class="grid">
+            <ion-row>
+              <ion-col width-33>
+                <img src="assets/img/file_03.png">
+                <h3>招标文件.rar</h3>
+                <h4>733kb</h4>
+              </ion-col>
+              <ion-col width-33>
+                <img src="assets/img/file_03.png">
+                <h3>招标文件.rar</h3>
+                <h4>733kb</h4>
+              </ion-col>
+              <ion-col width-33>
+                <img src="assets/img/file_03.png">
+                <h3>招标文件.rar</h3>
+                <h4>733kb</h4>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-list>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

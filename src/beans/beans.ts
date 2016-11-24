@@ -23,6 +23,7 @@ export class RealTimeTaxiGpsBean {
 export class TaxiMarker {
     gpsinfo: RealTimeTaxiGpsBean;
     marker: GoogleMapsMarker;
+    hasAddMarker: boolean;
 }
 
 export class BaseTaxiInfo {
@@ -153,6 +154,7 @@ export class BusGpsBean {
 export class BusMarker {
     gpsinfo: BusGpsBean;
     marker: GoogleMapsMarker;
+    hasMarker: boolean;
 }
 
 export class BusBaseInfoBean {
@@ -380,4 +382,13 @@ export class CameraBean {
 export class CameraVideoUrl {
     guId: string;
     playUrl: string;
+}
+
+////////////////////////////////////////////////////////
+export class PatrolCarBean {
+  id: string;
+  name: string;
+  carCode: string;
+  videoMac: string;
+  organization: string;
 }

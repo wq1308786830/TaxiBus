@@ -58,7 +58,7 @@ export class TaxiAdminSearchResult implements OnInit, OnDestroy {
     this.gMap = navParams.get("map");
     this.mapControler = navParams.get("mapControler");
 
-    this.gestureDelgate = gestureCtrl.create('mapRefresher', { priority: 0 });
+    this.gestureDelgate = gestureCtrl.createGesture({name: 'mapRefresher', priority: 0 });
     this.eventMgr = new UIEventManager(false);
   }
 

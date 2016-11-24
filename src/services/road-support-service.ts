@@ -4,21 +4,13 @@
 import {Injectable} from '@angular/core';
 import {Http, Response, Headers, RequestOptions, URLSearchParams} from '@angular/http';
 import {LoginService} from './login-service';
-import {
-  OperationAnlysisRespBean,
-  IllegalBean,
-  ViolationBean,
-  SaftyInfoBean,
-  DriverInfoBean,
-  OperationRecordBean
-} from '../beans/beans';
 import {Observable} from 'rxjs/Rx';
 
-const API_BASEURL: string = "http://61.160.200.232:418/api/lydlgy";
+const API_BASEURL: string = "http://221.131.92.133:8090/RoadManage/json/";
 const HEADER_CONTENT_TYPE: string = "application/x-www-form-urlencoded";
 
 @Injectable()
-export class TaxiDriverService {
+export class RoadSupportService {
   constructor(public http: Http, public loginService: LoginService) {
   }
 
@@ -185,7 +177,7 @@ export class TaxiDriverService {
    * @param carCode
    * @returns {Observable<R>}
    */
-  public getAllCar(page: number, rows: number, name: string, carCode: string) {
+  public getAllCar(page: number, rows: number, carCode?: string) {
     let headers = new Headers({'Content-Type': HEADER_CONTENT_TYPE});
     let searchs = new URLSearchParams();
     searchs.set("page", page.toString());
@@ -232,7 +224,7 @@ export class TaxiDriverService {
    * @param date
    * @returns {Observable<R>}
    */
-  public getTrajectory(page: number, rows: number, name: string, carCode: string, date: string) {
+  public getTrajectory(page: number, rows: number, carCode: string, date: string) {
     let headers = new Headers({'Content-Type': HEADER_CONTENT_TYPE});
     let searchs = new URLSearchParams();
     searchs.set("page", page.toString());

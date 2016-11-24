@@ -1,5 +1,4 @@
 import { Plugin, Cordova } from 'ionic-native';
-import { Observable } from 'rxjs/Observable';
 
 @Plugin({
     pluginName: 'HNBridge',
@@ -27,5 +26,14 @@ export class HNBridge {
 
     @Cordova({})
     static getPushChannelId(callback) {
+    }
+
+    @Cordova({})
+    static setCookieSession(session: string) {
+    }
+
+    @Cordova({})
+    static loginProject(susccessCb, errorCb, accountId: string, password: string){
+
     }
 }

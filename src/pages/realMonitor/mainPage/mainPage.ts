@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NavController, Content } from 'ionic-angular';
+import { App, NavController, Content } from 'ionic-angular';
+import { HomePage } from '../../main/home/home';
 
 
 @Component({
@@ -10,7 +11,7 @@ export class RealMonitorMainpage implements OnInit {
 
   @ViewChild(Content) content: Content;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public theApp: App) {
   }
 
   ngOnInit() {
@@ -46,5 +47,9 @@ export class RealMonitorMainpage implements OnInit {
 
       this.content.scrollTo(0, this.curSelElement.offsetTop);
     }
+  }
+
+  onCLickBack() {
+    this.theApp.getRootNav().setRoot(HomePage);
   }
 }

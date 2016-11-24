@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <ion-title>
+      地点微调
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="project-change-loc">
+  <!--todo:此处的搜索结果展现在地图下面的list中-->
+  <ion-searchbar button placeholder="搜索" (click)="onClickSearch()"></ion-searchbar>
+  <div class="map-detail" id="locmap">
+    <div class="map-cover-footer"></div>
+  </div>
+
+  <ion-list class="item-list">
+    <ion-item (click)="markPosition(116.470098,39.992838)">
+      <h2 class="item-title">溧阳市建设局</h2>
+      <p item-right>罗弯路8号建设服务大楼</p>
+    </ion-item>
+  </ion-list>
+</ion-content>

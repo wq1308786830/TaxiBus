@@ -1,0 +1,34 @@
+.project-change-loc {
+  height: 100%;
+  .item-list {
+    height: 50%;
+    padding: 0;
+    overflow-y: scroll;
+  }
+
+  .item-title {
+    color: #000;
+  }
+  ion-item-divider {
+    height: 10px;
+  }
+
+ .list-ios > .item-block:first-child {
+    border: none;
+  }
+
+  .list-ios {
+    margin-bottom: 0;
+    .item-inner {
+      display: block;
+    }
+  }
+
+  .item-ios p {
+    margin: 0;
+  }
+
+  .map-detail {
+    height: 50%;
+  }
+}

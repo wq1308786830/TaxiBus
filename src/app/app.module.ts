@@ -93,6 +93,10 @@ import {BusDriverViolation} from "../pages/busDriver/violation/violation";
  * RealMonitor
  */
 import { RealMonitorMainpage } from '../pages/realMonitor/mainPage/mainPage';
+
+/**
+ * RoadSupport
+ */
 import {RoadSupportPersonalCenter} from "../pages/roadSupport/personalCenter/personalCenter";
 import {RoadSupportPatrolManage} from "../pages/roadSupport/patrolManage/patrolManage";
 import {RoadSupportPolicyRule} from "../pages/roadSupport/policyRule/policyRule";
@@ -103,6 +107,19 @@ import {RoadSupportRegister} from "../pages/roadSupport/register/register";
 import {RoadSupportEvDetail} from "../pages/roadSupport/eventDetail/eventDetail";
 import {RoadSupportRuleDetail} from "../pages/roadSupport/ruleDetail/ruleDetail";
 import {RoadSupportPatrolDetail} from "../pages/roadSupport/patrolDetail/patrolDetail";
+import {RoadSupportService} from "../services/road-support-service";
+
+/**
+ * ProjectManage
+ */
+import {ProjectManageMainTab} from "../pages/projectManage/mainTab/mainTab";
+import {ProjectManageFile} from "../pages/projectManage/fileManage/fileManage";
+import {ProjectManageRegister} from "../pages/projectManage/register/register";
+import {ProjectManageVideo} from "../pages/projectManage/videoManage/videoManage";
+import {ProjectManageChangeLoc} from "../pages/projectManage/changeLoc/changeLoc";
+import {ProjectManageAddComment} from "../pages/projectManage/addComment/addComment";
+import {ProjectManageRegManage} from "../pages/projectManage/regManage/regManage";
+import {ProjectManageFileDetail} from "../pages/projectManage/fileDetail/fileDetail";
 
 
 @NgModule({
@@ -176,7 +193,16 @@ import {RoadSupportPatrolDetail} from "../pages/roadSupport/patrolDetail/patrolD
     RoadSupportRegister,
     RoadSupportEvDetail,
     RoadSupportRuleDetail,
-    RoadSupportPatrolDetail
+    RoadSupportPatrolDetail,
+
+    ProjectManageMainTab,
+    ProjectManageFile,
+    ProjectManageRegister,
+    ProjectManageVideo,
+    ProjectManageAddComment,
+    ProjectManageChangeLoc,
+    ProjectManageRegManage,
+    ProjectManageFileDetail,
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -257,8 +283,17 @@ import {RoadSupportPatrolDetail} from "../pages/roadSupport/patrolDetail/patrolD
     RoadSupportRegister,
     RoadSupportRuleDetail,
     RoadSupportEvDetail,
-    RoadSupportPatrolDetail
+    RoadSupportPatrolDetail,
+
+    ProjectManageMainTab,
+    ProjectManageFile,
+    ProjectManageRegister,
+    ProjectManageVideo,
+    ProjectManageAddComment,
+    ProjectManageChangeLoc,
+    ProjectManageRegManage,
+    ProjectManageFileDetail,
   ],
-  providers: [HNBridge, CommonService, LoginService, BusAdminService, TaxiDriverService, TaxiAdminService, BusDriverService, DropdownController]
+  providers: [HNBridge, CommonService, LoginService, BusAdminService, TaxiDriverService, TaxiAdminService, BusDriverService, RoadSupportService, DropdownController]
 })
 export class AppModule {}

@@ -36,10 +36,10 @@ export class TaxiAdminMonitor implements OnInit, OnDestroy, AfterViewInit {
     this.platform.ready().then(() => {
       this.gMap = new GoogleMap(this.googleMap.nativeElement, { gestures: { scroll: true, rotate: false, zoom: true } });
       if (this.gMap._objectInstance) {
-        this.gMap.setCenter(new GoogleMapsLatLng(31.407167, 119.477988));
-        this.gMap.setZoom(15);
         this.gMap.one(GoogleMapsEvent.MAP_READY).then(() => {
           this.bMapReady = true;
+          this.gMap.setCenter(new GoogleMapsLatLng(31.43, 119.48));
+          this.gMap.setZoom(15);
           this.clearAllMarker();
           this.updateTaxis();
         });
@@ -86,18 +86,20 @@ export class TaxiAdminMonitor implements OnInit, OnDestroy, AfterViewInit {
   }
 
   updateTaxis() {
-    //this.gMap.fromPointToLatLng([0, 0]).then(location => {
-    //});
     this.taxiAdminService.getAllCarRealtimeGPS().subscribe(taxis => {
       if (taxis) {
         let tmpMarks: TaxiMarker[] = [];
+
         for (let item of taxis) {
+
           let newMarker: TaxiMarker = new TaxiMarker();
           newMarker.gpsinfo = item;
+          newMarker.hasAddMarker = false;
           tmpMarks.push(newMarker);
           for (let index = 0; index < this.taxiMarkers.length; index++) {
             if (item.carNo === this.taxiMarkers[index].gpsinfo.carNo) {
               newMarker.marker = this.taxiMarkers[index].marker;
+              newMarker.hasAddMarker = this.taxiMarkers[index].hasAddMarker;
               this.taxiMarkers.splice(index, 1);
               break;
             }
@@ -122,10 +124,10 @@ export class TaxiAdminMonitor implements OnInit, OnDestroy, AfterViewInit {
     }
 
     for (let entry of this.taxiMarkers) {
-      if (entry.marker) {
+      if (entry.hasAddMarker && entry.marker) {
         entry.marker.setRotation(90 - parseFloat(entry.gpsinfo.direction));
         entry.marker.setPosition(new GoogleMapsLatLng(entry.gpsinfo.latitude, entry.gpsinfo.longitude));
-      } else  {
+      } else if (!entry.hasAddMarker) {
         let markerOptions: GoogleMapsMarkerOptions = {};
         if (entry.gpsinfo.status == "空车") {
           markerOptions = {
@@ -133,7 +135,7 @@ export class TaxiAdminMonitor implements OnInit, OnDestroy, AfterViewInit {
             title: entry.gpsinfo.carNo,
             rotation: 90 - parseFloat(entry.gpsinfo.direction),
             icon: {
-              url: "assets/img/taxi.png",       //todo:空车图片
+              url: "assets/img/taxi.png", 
               size: { width: 40, height: 20 }
             }
           };
@@ -149,8 +151,7 @@ export class TaxiAdminMonitor implements OnInit, OnDestroy, AfterViewInit {
           };
         }
 
-
-
+        entry.hasAddMarker = true;
         this.gMap.addMarker(markerOptions).then((marker: GoogleMapsMarker) => {
           entry.marker = marker;
           marker.addEventListener(GoogleMapsEvent.MARKER_CLICK).subscribe((data) => {

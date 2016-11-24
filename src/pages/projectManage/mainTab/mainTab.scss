@@ -1,0 +1,24 @@
+.project-main-tab {
+  background: url("../assets/img/project.png") no-repeat;
+  background-size: 100%;
+
+  ion-grid {
+    margin-top: 30%;
+  }
+  ion-row {
+    margin-top: 30px;
+    ion-col {
+      text-align: center;
+      img {
+        width: 65px;
+        height: 127px;
+      }
+      p {
+        color: #fff;
+        font-size: 14px;
+        text-align: center;
+        margin-top: -45px;
+      }
+    }
+  }
+}

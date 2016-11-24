@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      签到
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="project-register">
+  <ion-list>
+    <ion-item class="head">
+      <ion-avatar item-left>
+        <img src="assets/img/road/event_list_default_img.png">
+      </ion-avatar>
+      <h2>张三</h2>
+      <p>今日您已完成签到<span>0</span>次</p>
+    </ion-item>
+    <ion-item class="custom">
+      <div><img src="assets/img/sign.png">
+        <span>星期一：<span>2016.03.28</span></span>
+      </div>
+      <div><img src="assets/img/sign2_03.png">
+        <span>当前时间：<span>14：22</span></span>
+      </div>
+    </ion-item>
+    <ion-item class="location">
+      <ion-thumbnail item-left id="amap">
+      </ion-thumbnail>
+      <h2>溧阳客运东站</h2>
+      <p>江苏省溧阳市22号</p>
+      <button clear ion-button (click)="changeLoc()">地点微调</button>
+    </ion-item>
+
+    <ion-item *ngIf="sigin">
+      <ion-select>
+        <ion-option>项目项目项目项</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <div class="btn-img" *ngIf="!sigin">
+    <!--todo:签到图片-->
+    <img src="assets/img/project_07.png" (click)="signin()">
+  </div>
+  <div class="btn-img" *ngIf="sigin">
+    <!--todo：签退图片-->
+    <img src="assets/img/project_07.png" (click)="signout()">
+  </div>
+</ion-content>

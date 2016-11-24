@@ -1,0 +1,65 @@
+.project-register {
+  .list-ios .item-block .item-inner {
+    border: none;
+  }
+  ion-item.item-ios {
+    margin-top: 0;
+    border-bottom: 1px #eee solid;
+    &:first-of-type {
+      padding: 10px 16px;
+    }
+  }
+  .custom ion-label {
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    div {
+      display: inherit;
+      align-items: center;
+    }
+    img {
+      height: 22px;
+      width: 22px;
+      margin-right: 6px;
+    }
+    span {
+      span {
+        color: #8e9093;
+      }
+    }
+  }
+  .head {
+    p {
+      span {
+        color: #EFA421;
+        font-size: 22px;
+      }
+    }
+  }
+  .item-ios ion-thumbnail[item-left] {
+    margin: 16px 16px 16px 0;
+    height: 120px;
+    width: 170px;
+  }
+  .location {
+    ion-label{
+      h2 {
+        margin-bottom: 6px;
+      }
+      p {
+        margin-bottom: 8px;
+      }
+    }
+  }
+  .amap-logo {
+    right: 0 !important;
+    left: auto !important;
+    display: none;
+  }
+
+  .amap-copyright {
+    right: 70px !important;
+    left: auto !important;
+  }
+}

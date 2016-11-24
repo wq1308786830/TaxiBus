@@ -36,10 +36,10 @@ export class BusAdminMonitor implements OnInit, OnDestroy, AfterViewInit {
     this.platform.ready().then(() => {
       this.gMap = new GoogleMap(this.googleMap.nativeElement, { gestures: { scroll: true, rotate: false, zoom: true } });
       if (this.gMap._objectInstance) {
-        this.gMap.setCenter(new GoogleMapsLatLng(31.43, 119.48));
-        this.gMap.setZoom(15);
         this.gMap.one(GoogleMapsEvent.MAP_READY).then(() => {
           this.bMapReady = true;
+          this.gMap.setCenter(new GoogleMapsLatLng(31.43, 119.48));
+          this.gMap.setZoom(15);
           this.clearAllMarker();
           this.updateBuses();
         });
@@ -91,10 +91,13 @@ export class BusAdminMonitor implements OnInit, OnDestroy, AfterViewInit {
       for (let item of buses) {
         let newMarker: BusMarker = new BusMarker();
         newMarker.gpsinfo = item;
+        newMarker.hasMarker = false;
+        newMarker.marker = null;
         tmpMarks.push(newMarker);
         for (let index = 0; index < this.busMarks.length; index++) {
           if (item.carNo === this.busMarks[index].gpsinfo.carNo) {
             newMarker.marker = this.busMarks[index].marker;
+            newMarker.hasMarker = this.busMarks[index].hasMarker;
             this.busMarks.splice(index, 1);
             break;
           }
@@ -119,10 +122,10 @@ export class BusAdminMonitor implements OnInit, OnDestroy, AfterViewInit {
     }
 
     for (let entry of this.busMarks) {
-      if (entry.marker) {
+      if (entry.hasMarker &&  entry.marker) {
         entry.marker.setRotation(90 - parseFloat(entry.gpsinfo.direction));
         entry.marker.setPosition(new GoogleMapsLatLng(entry.gpsinfo.latitude, entry.gpsinfo.longitude));
-      } else {
+      } else if (!entry.hasMarker) {
         let markerOptions: GoogleMapsMarkerOptions = {
           position: new GoogleMapsLatLng(entry.gpsinfo.latitude, entry.gpsinfo.longitude),
           title: entry.gpsinfo.carNo,
@@ -133,6 +136,7 @@ export class BusAdminMonitor implements OnInit, OnDestroy, AfterViewInit {
           }
         };
 
+        entry.hasMarker = true;
         this.gMap.addMarker(markerOptions).then((marker: GoogleMapsMarker) => {
           entry.marker = marker;
           marker.addEventListener(GoogleMapsEvent.MARKER_CLICK).subscribe((data) => {
