@@ -5,7 +5,7 @@ import { BusAdminVideo } from '../video/video';
 import { BusAdminBusDetail } from '../detail/detail';
 import { BusSimpleInfoBean, BusGpsBean } from '../../../beans/beans';
 import { BusAdminService } from '../../../services/bus-admin-service';
-import { LoginService } from '../../../services/login-service';
+import { CommonHttpService } from '../../../services/common-http-service';
 import { GoogleMap } from 'ionic-native';
 
 @Component({
@@ -21,7 +21,7 @@ export class BusAdminBusCard implements OnInit, OnDestroy {
                 public viewCtrl: ViewController, 
                 public params: NavParams,
                 public busAdminService: BusAdminService,
-                public loginService: LoginService,
+                public commonHttpService: CommonHttpService,
                 public loadingController: LoadingController) {
         
         this.busGpsinfo = this.params.get("gpsinfo");
@@ -56,7 +56,7 @@ export class BusAdminBusCard implements OnInit, OnDestroy {
             content: "获取视频列表中..."
         });
         loader.present();
-        this.loginService.getVehicleCameraList(this.busGpsinfo.carNo, "bus").subscribe(info => {
+        this.commonHttpService.getVehicleCameraList(this.busGpsinfo.carNo, "bus").subscribe(info => {
             if (info && info.length > 0) {
                 this.navCtrl.push(BusAdminVideo, { gpsinfo: this.busGpsinfo, cameralist: info });   
             } else {

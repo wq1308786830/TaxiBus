@@ -1,85 +1,49 @@
 <ion-header>
-    <ion-navbar>
-        <ion-buttons start>
-			<button ion-button (click)="onCLickBack()">返回</button>
-		</ion-buttons>
+    <ion-navbar no-border-bottom>
         <ion-title>
             实时路况
         </ion-title>
     </ion-navbar>
+
+    <ion-toolbar no-border-top>
+        <ion-segment [(ngModel)]="listType">
+            <ion-segment-button value="station">
+                固定站点
+            </ion-segment-button>
+            <ion-segment-button value="police">
+                警方监控
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content class="realmonitor-mainpage">
-    <div class="main-item" tappable (click)="onClickItem($event)">
-        <span>鼓楼区 城西干道</span>
-        <ion-icon name="arrow-down" class="item-down right-item"></ion-icon>
-        <ion-icon name="arrow-up" class="item-up right-item"></ion-icon>
-    </div>
-
-    <div class="sub-list">
-        <div class="sub-item">
-            <div>清凉门隧道西1</div>
+    <div [ngSwitch]="listType">
+        <div *ngSwitchCase="'station'">
+            <div *ngFor="let station of stationList">
+                <div class="main-item" tappable (click)="onClickItem($event)">
+                    <span>{{station.id}}</span>
+                    <ion-icon name="arrow-down" class="item-down right-item"></ion-icon>
+                    <ion-icon name="arrow-up" class="item-up right-item"></ion-icon>
+                </div>
+                <div class="sub-list">
+                    <div class="sub-item" *ngFor="let camera of station.cameras" tappable (click)="startPlay(camera, 'station')">
+                        <div>{{camera.channelName}}</div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="sub-item">
-            <div>清凉门隧道西2</div>
-        </div>
-        <div class="sub-item">
-            <div>清凉门隧道西3</div>
-        </div>
-        <div class="sub-item">
-            <div>清凉门隧道西1</div>
-        </div>
-        <div class="sub-item">
-            <div>清凉门隧道西4</div>
-        </div>
-        <div class="sub-item">
-            <div>清凉门隧道西5</div>
-        </div>
-        <div class="sub-item">
-            <div>清凉门隧道西6</div>
-        </div>
-        <div class="sub-item">
-            <div>清凉门隧道西7</div>
-        </div>
-        <div class="sub-item">
-            <div>清凉门隧道西8</div>
+        <div *ngSwitchCase="'police'">
+            <div *ngFor="let station of policeList">
+                <div class="main-item" tappable (click)="startPlay(station.cameras[0], 'police')">
+                    <span>{{station.cameras[0].channelName}}</span>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="main-item" tappable (click)="onClickItem($event)">
-        <span>鼓楼区 城西干道</span>
-        <ion-icon name="arrow-down" class="item-down right-item"></ion-icon>
-        <ion-icon name="arrow-up" class="item-up right-item"></ion-icon>
-    </div>
-
-    <div class="sub-list">
-        <div class="sub-item">
-            <div>清凉门隧道西1</div>
-        </div>
-        <div class="sub-item">
-            <div>清凉门隧道西2</div>
-        </div>
-        <div class="sub-item">
-            <div>清凉门隧道西3</div>
-        </div>
-        <div class="sub-item">
-            <div>清凉门隧道西1</div>
-        </div>
-        <div class="sub-item">
-            <div>清凉门隧道西4</div>
-        </div>
-        <div class="sub-item">
-            <div>清凉门隧道西5</div>
-        </div>
-        <div class="sub-item">
-            <div>清凉门隧道西6</div>
-        </div>
-        <div class="sub-item">
-            <div>清凉门隧道西7</div>
-        </div>
-        <div class="sub-item">
-            <div>清凉门隧道西8</div>
-        </div>
-    </div>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+		<ion-infinite-scroll-content></ion-infinite-scroll-content>
+	</ion-infinite-scroll>
 
 </ion-content>

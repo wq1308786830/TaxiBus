@@ -2,6 +2,11 @@
     .slide-container {
         width: 100%;
         min-height: 100px;
+
+        img{
+            width: 100%;
+            height: auto;
+        }
     }
 
     .item-box-top-right {

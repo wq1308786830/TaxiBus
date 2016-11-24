@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
-import { LoginService } from '../../../services/login-service';
+import { CommonHttpService } from '../../../services/common-http-service';
 import { AlertController, Platform } from 'ionic-angular';
 
 import { HomePage } from "../../main/home/home";
@@ -23,7 +23,7 @@ export class LoginPage implements OnInit {
         public alertCtrl: AlertController,
         public loadingCtrl: LoadingController,
         public platform: Platform,
-        public loginService: LoginService) {
+        public commonHttpService: CommonHttpService) {
     }
 
     ngOnInit() {
@@ -40,11 +40,11 @@ export class LoginPage implements OnInit {
             });
             loader.present();
 
-            this.loginService.login(this.username, this.password).subscribe(info => {
+            this.commonHttpService.login(this.username, this.password).subscribe(info => {
                 if (info) {
                     localStorage.setItem("username", this.username);
                     this.getPushChannelId(info.account);
-                    this.loginService.accountInfo = info;
+                    this.commonHttpService.accountInfo = info;
                     loader.dismiss();
 
                     let types: string[] = info.type.split(",");
@@ -97,8 +97,7 @@ export class LoginPage implements OnInit {
 
     getPushChannelId(accountid: string) {
         HNBridge.getPushChannelId(channelid => {
-            console.log("********************channelid=" + channelid);
-            this.loginService.addMsgPushInfo4Traffic(channelid).subscribe(info => {
+            this.commonHttpService.addMsgPushInfo4Traffic(channelid).subscribe(info => {
 
             });
         });

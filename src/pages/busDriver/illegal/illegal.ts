@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 import { IllegalBean } from '../../../beans/beans';
-import { LoginService } from '../../../services/login-service';
-import {BusDriverService} from "../../../services/bus-driver-service";
+import { CommonHttpService } from '../../../services/common-http-service';
+import { BusDriverService } from "../../../services/bus-driver-service";
 import { CommonService } from '../../../services/common-service';
 
 @Component({
@@ -17,12 +17,12 @@ export class BusDriverIllegal {
     public driverNo: string;
 
     constructor(public navCtrl: NavController,
-        public loginService: LoginService,
+        public commonHttpService: CommonHttpService,
         public loadingCtrl: LoadingController,
         public commonService: CommonService,
         public busDriverService: BusDriverService) {
         this.curDateType = 1;
-        this.driverNo = this.loginService.accountInfo.id;
+        this.driverNo = this.commonHttpService.accountInfo.id;
     }
 
     ngOnInit() {

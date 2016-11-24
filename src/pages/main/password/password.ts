@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
-import { LoginService } from '../../../services/login-service';
+import { CommonHttpService } from '../../../services/common-http-service';
 import { AlertController } from 'ionic-angular';
 
 declare var HNBridge;
@@ -16,7 +16,7 @@ export class PasswordPage implements OnInit {
     constructor(public navCtrl: NavController,
         public alertCtrl: AlertController,
         public loadingCtrl: LoadingController,
-        public loginService: LoginService) {
+        public commonHttpService: CommonHttpService) {
     }
 
     ngOnInit() {
@@ -48,7 +48,7 @@ export class PasswordPage implements OnInit {
         });
         loader.present();
 
-        this.loginService.updatePassword(this.oldpassword, this.newpassword1).subscribe(() => {
+        this.commonHttpService.updatePassword(this.oldpassword, this.newpassword1).subscribe(() => {
             loader.dismiss();
             this.showAlertMsg('恭喜您，修改密码成功.');
         }, error => {

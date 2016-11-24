@@ -1,7 +1,7 @@
-import {Component, AfterViewInit, OnDestroy, OnInit} from "@angular/core";
-import {NavController, Platform, App, NavParams} from "ionic-angular";
-import {CameraBean, CameraVideoUrl} from "../../../beans/beans";
-import {LoginService} from "../../../services/login-service";
+import { Component, AfterViewInit, OnDestroy, OnInit } from "@angular/core";
+import { NavController, Platform, App, NavParams } from "ionic-angular";
+import { CameraBean, CameraVideoUrl } from "../../../beans/beans";
+import { CommonHttpService } from "../../../services/common-http-service";
 
 declare var AMap;
 declare var HNBridge;
@@ -14,13 +14,17 @@ export class ProjectManageVideo implements OnInit, OnDestroy, AfterViewInit {
   public map: any;
   public marker: any;
   public markers: any = [];
+  public result: any = {};
 
   public beatHeartTimer: number;
   public cameraList: CameraBean[];
   public curVideoUrl: CameraVideoUrl;
 
-  constructor(public navCtrl: NavController, public params: NavParams,
-              public platform: Platform, public theApp: App, public loginService: LoginService) {
+  constructor(public navCtrl: NavController,
+    public params: NavParams,
+    public platform: Platform,
+    public theApp: App,
+    public commonHttpService: CommonHttpService) {
     this.cameraList = this.params.get("cameralist");
     this.beatHeartTimer = -1;
   }
@@ -36,7 +40,7 @@ export class ProjectManageVideo implements OnInit, OnDestroy, AfterViewInit {
     this.map = new AMap.Map('videomap', {
       zoom: 14,
       zoomEnable: true,
-      center: [116.470098,39.992838]
+      center: [116.470098, 39.992838]
     });
 
     AMap.plugin(['AMap.ToolBar', 'AMap.Scale'], () => {
@@ -45,7 +49,7 @@ export class ProjectManageVideo implements OnInit, OnDestroy, AfterViewInit {
     });
 
     this.marker = new AMap.Marker({
-      position: [116.470098,39.992838],
+      position: [116.470098, 39.992838],
       title: 'aaaaaa',
       draggable: false,
       map: this.map
@@ -84,7 +88,7 @@ export class ProjectManageVideo implements OnInit, OnDestroy, AfterViewInit {
   }
 
   sendBeatHeart() {
-    this.loginService.sendVideoBeatHeart(this.curVideoUrl.guId).subscribe(() => {
+    this.commonHttpService.sendVideoBeatHeart(this.curVideoUrl.guId).subscribe(() => {
     });
   }
 
@@ -97,7 +101,7 @@ export class ProjectManageVideo implements OnInit, OnDestroy, AfterViewInit {
 
   startPlay(item: any) {
     let curCamera: CameraBean = item;
-    this.loginService.getVideoPlayUrl(item.guId, "bus").subscribe(info => {
+    this.commonHttpService.getVideoPlayUrl(item.guId, "bus").subscribe(info => {
       if (info) {
         this.curVideoUrl = info;
         this.startBeatHeart();
@@ -106,5 +110,9 @@ export class ProjectManageVideo implements OnInit, OnDestroy, AfterViewInit {
         });
       }
     });
+  }
+
+  onClickSearch() {
+    this.result = {};
   }
 }

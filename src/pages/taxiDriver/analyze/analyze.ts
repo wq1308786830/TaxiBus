@@ -4,7 +4,7 @@ import { Ng2Echart } from '../../../components/ng2-echart';
 import { TaxiDriverMy } from '../my/my';
 import { TaxiDriverService } from '../../../services/taxi-driver-service';
 import { OperationAnlysisRespBean } from '../../../beans/beans';
-import { LoginService } from '../../../services/login-service';
+import { CommonHttpService } from '../../../services/common-http-service';
 import { CommonService } from '../../../services/common-service';
 
 
@@ -26,12 +26,12 @@ export class TaxiDriverAnalyze implements OnInit {
     public platform: Platform,
     public taxiDriverService: TaxiDriverService,
     public loadingCtrl: LoadingController,
-    public loginService: LoginService,
+    public commonHttpService: CommonHttpService,
     public commonService: CommonService,
     public popoverCtrl: PopoverController) {
     this.operationInfo = new OperationAnlysisRespBean();
     this.curDateType = 1;
-    this.driverNo = this.loginService.accountInfo.id;
+    this.driverNo = this.commonHttpService.accountInfo.id;
   }
 
   ngOnInit() {

@@ -1,4 +1,27 @@
 .project-register {
+  .btn-img {
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+    img {
+      &:first-of-type {
+        height: 120px;
+        width: 120px;
+      }
+      &:last-of-type {
+        margin-left: -81px;
+        margin-top: 10px;
+        width: 42px;
+        height: 53px;
+      }
+    }
+    span {
+      margin-left: -34px;
+      margin-top: 73px;
+      color: #fff;
+      font-size: 16px;
+    }
+  }
   .list-ios .item-block .item-inner {
     border: none;
   }
@@ -52,6 +75,7 @@
       }
     }
   }
+
   .amap-logo {
     right: 0 !important;
     left: auto !important;

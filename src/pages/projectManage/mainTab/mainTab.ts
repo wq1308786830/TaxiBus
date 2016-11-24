@@ -3,7 +3,6 @@ import {ProjectManageRegister} from "../register/register";
 import {Platform, NavParams, NavController} from "ionic-angular";
 import {ProjectManageFile} from "../fileManage/fileManage";
 import {ProjectManageVideo} from "../videoManage/videoManage";
-import {ProjectManageRegManage} from "../regManage/regManage";
 
 @Component({
   templateUrl: 'mainTab.html'

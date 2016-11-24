@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <ion-title>
+      事件详情
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="road-ev-detail">
+  <div padding>
+    <ion-segment [(ngModel)]="items">
+      <ion-segment-button value="basic">
+        基本信息
+      </ion-segment-button>
+      <ion-segment-button value="approve">
+        流程审批图
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="items">
+    <ion-list *ngSwitchCase="'basic'" class="item-list">
+        <ion-item><span class="item-title">任务编号</span>
+          <div item-right>{{eventInfo.AllotCode}}</div>
+        </ion-item>
+        <ion-item><span class="item-title">巡查分类</span>
+          <div item-right>{{eventInfo.PatorCateGory}}</div>
+        </ion-item>
+        <ion-item><span class="item-title">交办时间</span>
+          <div item-right>{{eventInfo.AllotedDate}}</div>
+        </ion-item>
+        <ion-item><span class="item-title">交办单位</span>
+          <div item-right>{{eventInfo.SendOrg}}</div>
+        </ion-item>
+        <ion-item><span class="item-title">线路</span>
+          <div item-right>{{eventInfo.RoadLine}}</div>
+        </ion-item>
+        <ion-item><span class="item-title">行到方向</span>
+          <div item-right>{{eventInfo.Lane===1? '下行' : '上行'}}</div>
+        </ion-item>
+        <ion-item><span class="item-title">经纬度</span>
+          <div item-right>{{eventInfo.LatitudeLongitude}}</div>
+        </ion-item>
+        <ion-item><span class="item-title">处理后经纬度</span>
+          <div item-right>{{eventInfo.AfterLatitudeLongitude}}</div>
+        </ion-item>
+        <ion-item  no-lines><span class="item-title">状态</span>
+          <div item-right>{{eventInfo.Status}}</div>
+        </ion-item>
+
+      <div class="img-container">
+        <ion-label>上报图片</ion-label>
+        <ion-grid>
+          <ion-row>
+            <ion-col width-33><img src="{{eventInfo.Picture}}"></ion-col>
+            <ion-col width-33></ion-col>
+            <ion-col width-33></ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <div class="img-container">
+        <ion-label>结案图片</ion-label>
+        <ion-grid>
+          <ion-row>
+            <ion-col width-33><img src="{{eventInfo.AfterPicture}}"></ion-col>
+            <ion-col width-33></ion-col>
+            <ion-col width-33></ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <ion-item class="top8" no-lines>
+        <p class="item-title">案件描述</p>
+        <p>{{eventInfo.EventContent}}</p>
+        <p item-right>{{eventInfo.ReceiveTime}}</p>
+      </ion-item>
+      <ion-item class="top8">
+        <p class="item-title">反馈信息</p>
+        <p>{{eventInfo.EventFeedback}}</p>
+        <p item-right>{{eventInfo.FeedbackTime}}</p>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'approve'">
+      <ion-item *ngFor="let step of eventInfo.Step">
+        <ion-avatar item-left>
+          <img src="assets/img/road/event_process_user_img.png">
+        </ion-avatar>
+        <h4>接收人员：<span class="blue">{{step.ReceivePerson}}</span></h4>
+        <h4>接收单位：<span class="blue">{{step.OrganizationName}}</span></h4>
+        <p>{{step.ReceiveDateTime}}</p>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

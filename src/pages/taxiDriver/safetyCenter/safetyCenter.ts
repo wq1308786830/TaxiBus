@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { SaftyInfoBean, IllegalBean, ViolationBean } from '../../../beans/beans';
 import { TaxiDriverService } from '../../../services/taxi-driver-service';
-import { LoginService } from '../../../services/login-service';
+import { CommonHttpService } from '../../../services/common-http-service';
 import { TaxiDriverIllegal } from '../illegal/illegal';
 import { TaxiDriverViolation } from '../violation/violation';
 
@@ -15,25 +15,25 @@ export class TaxiDriverSafetyCenter implements OnInit {
   violationList: ViolationBean[] = [];
 
   constructor(public navCtrl: NavController,
-  public loginService: LoginService,
+  public commonHttpService: CommonHttpService,
   public taxiDriverService: TaxiDriverService) {
     this.saftyInfo = new SaftyInfoBean();
   }
 
   ngOnInit() {
-    this.taxiDriverService.getTaxiSaftyInfosByDriverNo(this.loginService.accountInfo.id).subscribe(info => {
+    this.taxiDriverService.getTaxiSaftyInfosByDriverNo(this.commonHttpService.accountInfo.id).subscribe(info => {
       if (info && info.length > 0) {
         this.saftyInfo = info[0];
       }
     });
 
-    this.taxiDriverService.getTaxiIllegalsByDriverNoForTwo(this.loginService.accountInfo.id).subscribe(info => {
+    this.taxiDriverService.getTaxiIllegalsByDriverNoForTwo(this.commonHttpService.accountInfo.id).subscribe(info => {
       if (info) {
         this.illegalList = info;
       }
     });
 
-    this.taxiDriverService.getTaxiViolationsByDriverNoForTwo(this.loginService.accountInfo.id).subscribe(info => {
+    this.taxiDriverService.getTaxiViolationsByDriverNoForTwo(this.commonHttpService.accountInfo.id).subscribe(info => {
       if (info) {
         this.violationList = info;
       }
@@ -49,21 +49,21 @@ export class TaxiDriverSafetyCenter implements OnInit {
   }
 
   doRefresh(refresher) {
-    this.taxiDriverService.getTaxiSaftyInfosByDriverNo(this.loginService.accountInfo.id).subscribe(info => {
+    this.taxiDriverService.getTaxiSaftyInfosByDriverNo(this.commonHttpService.accountInfo.id).subscribe(info => {
       if (info && info.length > 0) {
         this.saftyInfo = info[0];
       }
       refresher.complete();
     });
 
-    this.taxiDriverService.getTaxiIllegalsByDriverNoForTwo(this.loginService.accountInfo.id).subscribe(info => {
+    this.taxiDriverService.getTaxiIllegalsByDriverNoForTwo(this.commonHttpService.accountInfo.id).subscribe(info => {
       if (info) {
         this.illegalList = info;
       }
       refresher.complete();
     });
 
-    this.taxiDriverService.getTaxiViolationsByDriverNoForTwo(this.loginService.accountInfo.id).subscribe(info => {
+    this.taxiDriverService.getTaxiViolationsByDriverNoForTwo(this.commonHttpService.accountInfo.id).subscribe(info => {
       if (info) {
         this.violationList = info;
       }

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { ViolationBean } from '../../../beans/beans';
-import { LoginService } from '../../../services/login-service';
 import { CommonService } from '../../../services/common-service';
 import {BusDriverService} from "../../../services/bus-driver-service";
 
@@ -18,7 +17,6 @@ export class BusDriverViolation {
 
     constructor(public navCtrl: NavController,
         public params: NavParams,
-        public loginService: LoginService,
         public loadingCtrl: LoadingController,
         public commonService: CommonService,
         public busDriverService: BusDriverService) {

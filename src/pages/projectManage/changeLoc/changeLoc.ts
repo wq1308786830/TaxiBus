@@ -8,8 +8,9 @@ declare var AMap;
 })
 export class ProjectManageChangeLoc implements OnInit, OnDestroy, AfterViewInit {
 
-  public map;
-  public marker;
+  public map: any;
+  public marker: any;
+  public result: any = {};
 
   constructor(public navCtrl: NavController,
               public platform: Platform,
@@ -45,5 +46,9 @@ export class ProjectManageChangeLoc implements OnInit, OnDestroy, AfterViewInit 
       draggable:false //是否可拖动
     });
     this.map.setCenter(new AMap.LngLat(x, y));
+  }
+
+  onClickSearch() {
+
   }
 }

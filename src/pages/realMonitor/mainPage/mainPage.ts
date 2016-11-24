@@ -1,20 +1,58 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { App, NavController, Content } from 'ionic-angular';
-import { HomePage } from '../../main/home/home';
+import { App, NavController, Content, LoadingController, Platform } from 'ionic-angular';
+import { CommonHttpService } from '../../../services/common-http-service';
+import { CommonService } from '../../../services/common-service';
+import { StationCameraBean, CameraVideoUrl } from '../../../beans/beans';
 
+declare var HNBridge;
 
 @Component({
   templateUrl: 'mainPage.html'
 })
 export class RealMonitorMainpage implements OnInit {
-  private curSelElement: any = null;
-
   @ViewChild(Content) content: Content;
 
-  constructor(public navCtrl: NavController, public theApp: App) {
+  private curSelElement: any = null;
+  listType: any;
+  public stationList: StationCameraBean[];
+  public policeList: StationCameraBean[];
+  private curStationPage: number;
+  private curPolicePage: number;
+  public beatHeartTimer: number;
+  public curVideoUrl: CameraVideoUrl;
+
+  constructor(public navCtrl: NavController,
+    public theApp: App,
+    public loadingCtrl: LoadingController,
+    public platform: Platform,
+    public commonService: CommonService,
+    public commonHttpService: CommonHttpService) {
+    this.listType = "station";
+    this.stationList = [];
+    this.policeList = [];
+    this.curStationPage = 0;
+    this.curPolicePage = 0;
   }
 
   ngOnInit() {
+    let loader = this.loadingCtrl.create({
+      content: "加载中..."
+    });
+    loader.present();
+    this.commonHttpService.getStationCameraList(0, 50).subscribe(station => {
+      if (station) {
+        this.stationList = station;
+      }
+      loader.dismiss();
+    }, error => {
+      loader.dismiss();
+    });
+
+    this.commonHttpService.getPoliceCameraList(0, 50).subscribe(cameralist => {
+      if (cameralist) {
+        this.policeList = cameralist;
+      }
+    });
   }
 
   ngAfterViewInit() {
@@ -49,7 +87,71 @@ export class RealMonitorMainpage implements OnInit {
     }
   }
 
-  onCLickBack() {
-    this.theApp.getRootNav().setRoot(HomePage);
+  onClickPliceItem(station: any) {
+
+  }
+
+  doInfinite(ev) {
+    if (this.listType === 'station') {
+      this.commonHttpService.getStationCameraList(++this.curStationPage, 50).subscribe(data => {
+        if (data) {
+          for (let i of data)
+            this.stationList.push(i);
+        }
+        ev.complete();
+      });
+    } else if (this.listType === 'police') {
+      this.commonHttpService.getPoliceCameraList(++this.curPolicePage, 50).subscribe(data => {
+        if (data) {
+          for (let i of data)
+            this.policeList.push(i);
+        }
+        ev.complete();
+      });
+    }
+  }
+
+  startBeatHeart() {
+    if (this.beatHeartTimer !== -1) {
+      clearInterval(this.beatHeartTimer);
+    }
+
+    this.sendBeatHeart();
+    this.beatHeartTimer = setInterval(() => {
+      this.sendBeatHeart();
+    }, 10000);
+  }
+
+  sendBeatHeart() {
+    this.commonHttpService.sendVideoBeatHeart(this.curVideoUrl.guId).subscribe(() => {
+    });
+  }
+
+  clearBeatHeart() {
+    if (this.beatHeartTimer !== -1) {
+      clearInterval(this.beatHeartTimer);
+      this.beatHeartTimer = -1;
+    }
+  }
+
+  startPlay(camera: any, type: string) {
+    let loader = this.loadingCtrl.create({
+      content: "获取播放地址中..."
+    });
+    loader.present();
+    this.commonHttpService.getVideoPlayUrl(camera.guId, type).subscribe(info => {
+
+      if (info) {
+        this.curVideoUrl = info;
+        this.startBeatHeart();
+        this.platform.ready().then(() => {
+          HNBridge.playVideoUrl(this.curVideoUrl.playUrl, camera.channelName);
+        });
+      }
+      loader.dismiss();
+    }, error => {
+      loader.dismiss();
+      this.commonService.showAlertMsg(error);
+    });
   }
 }

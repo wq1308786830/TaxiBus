@@ -3,7 +3,7 @@ import { NavController, ViewController, NavParams, LoadingController } from 'ion
 import { TaxiAdminDetail } from '../detail/detail';
 import { TaxiInfo, RealTimeTaxiGpsBean } from '../../../beans/beans';
 import { TaxiAdminService } from '../../../services/taxi-admin-service';
-import { LoginService } from '../../../services/login-service';
+import { CommonHttpService } from '../../../services/common-http-service';
 import { GoogleMap } from 'ionic-native';
 import { TaxiAdminVideo } from '../video/video';
 
@@ -20,7 +20,7 @@ export class TaxiAdminTaxiCard implements OnInit, OnDestroy {
                 public viewCtrl: ViewController, 
                 public params: NavParams,
                 public loadingController: LoadingController,
-                public loginService: LoginService,
+                public commonHttpService: CommonHttpService,
                 public taxiAdminServie: TaxiAdminService) {
         this.gpsInfo = this.params.get("gpsinfo");
         this.taxiInfo = new TaxiInfo();
@@ -64,7 +64,7 @@ export class TaxiAdminTaxiCard implements OnInit, OnDestroy {
             content: "获取视频列表中..."
         });
         loader.present();
-        this.loginService.getVehicleCameraList(this.gpsInfo.carNo, "taxi").subscribe(info => {
+        this.commonHttpService.getVehicleCameraList(this.gpsInfo.carNo, "taxi").subscribe(info => {
             if (info && info.length > 0) {
                 this.navCtrl.push(TaxiAdminVideo, { gpsinfo: this.gpsInfo, cameralist: info });   
             } else {

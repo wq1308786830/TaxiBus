@@ -5,11 +5,12 @@ import { MyApp } from './app.component';
 /**
  * Common services
  */
-import { LoginService } from '../services/login-service';
+import { CommonHttpService } from '../services/common-http-service';
 import { TaxiAdminService } from '../services/taxi-admin-service';
 import { TaxiDriverService } from '../services/taxi-driver-service';
 import { BusDriverService } from '../services/bus-driver-service';
 import { BusAdminService } from '../services/bus-admin-service';
+import { ProjectService } from '../services/project-service';
 import { CommonService } from '../services/common-service';
 
 
@@ -294,6 +295,17 @@ import {ProjectManageFileDetail} from "../pages/projectManage/fileDetail/fileDet
     ProjectManageRegManage,
     ProjectManageFileDetail,
   ],
-  providers: [HNBridge, CommonService, LoginService, BusAdminService, TaxiDriverService, TaxiAdminService, BusDriverService, RoadSupportService, DropdownController]
+  providers: [
+    HNBridge, 
+    CommonService, 
+    CommonHttpService, 
+    BusAdminService, 
+    TaxiDriverService, 
+    TaxiAdminService, 
+    BusDriverService, 
+    RoadSupportService, 
+    ProjectService,
+    DropdownController
+  ]
 })
 export class AppModule {}

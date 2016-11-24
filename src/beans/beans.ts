@@ -322,50 +322,65 @@ export class SalaryBean {
 }
 
 export class BusInsuranceBean {
-    insuredObj: string;       //被保险人
-    insuredObjOrgCode: string;       //被保险人组织机构代码
-    busNo: string;              //车牌号码
-    vehicleType: string;      //机动车种类
-    useProp: string;           //使用性质
-    egineNo: string;          //发动机号码
-    discriminateCode: string;         //识别代码（车架号）
-    factoryPlateCode: string;         //厂牌型号
-    maxPassanger: number;           //核定载客
-    outputValue:  number;             //排量
-    insuranceStartTime: string;            //保险开始时间
-    insuranceEndTime: string;            //保险结束时间
-    insuranceTotalMoney: number;            //保险总金额
-    vehicleLossInsuranceMoney: number;            //机动车损失保险(A)
-    thirdPartyLiabilityInsuranceMoney: number;        //第三方责任保险(B)
-    vehicleDamageInsuranceMoney: number;      //车身划痕损失险(L)
-    excludingOdds: number;              //不记免赔率（M）覆盖A
-    compulsoryLiabilityInsuranceMoney: number;      //机动车强制责任保险
-    travelTaxMoney: number;             //车船税
+    insuredObj: string;                         //被保险人
+    insuredObjOrgCode: string;                  //被保险人组织机构代码
+    busNo: string;                              //车牌号码
+    vehicleType: string;                        //机动车种类
+    useProp: string;                            //使用性质
+    egineNo: string;                            //发动机号码
+    discriminateCode: string;                   //识别代码（车架号）
+    factoryPlateCode: string;                   //厂牌型号
+    maxPassanger: number;                       //核定载客
+    outputValue:  number;                       //排量
+    insuranceStartTime: string;                 //保险开始时间
+    insuranceEndTime: string;                   //保险结束时间
+    insuranceTotalMoney: number;                //保险总金额
+    vehicleLossInsuranceMoney: number;          //机动车损失保险(A)
+    thirdPartyLiabilityInsuranceMoney: number;  //第三方责任保险(B)
+    vehicleDamageInsuranceMoney: number;        //车身划痕损失险(L)
+    excludingOdds: number;                      //不记免赔率（M）覆盖A
+    compulsoryLiabilityInsuranceMoney: number;  //机动车强制责任保险
+    travelTaxMoney: number;                     //车船税
 }
 
 export class BusDriverDepartNoticeBean {
-  departDate: string;                       //发车时间
-  departStartPosition: string;          //始发站
-  departEndPosition: string;            //终点站
+  departDate: string;                           //发车时间
+  departStartPosition: string;                  //始发站
+  departEndPosition: string;                    //终点站
 }
 
 export class BusDriverSafeNoticeBean {
-  dateTime: string;                       //发生时间
-  location: string;                         //发生地点
-  lawTitle: string;                          //法律条款
+  dateTime: string;                             //发生时间
+  location: string;                             //发生地点
+  lawTitle: string;                             //法律条款
 }
 
 export class  BusDriverNameAndNoBean {
-  busno: string;                              //车牌号
-  drivername: string;                      //司机名
+  busno: string;                                //车牌号
+  drivername: string;                           //司机名
 }
 
 export class  TaxiDriverNameAndNoBean {
-  carno: string;                              //车牌号
-  drivername: string;                      //司机名
+  carno: string;                                //车牌号
+  drivername: string;                           //司机名
 }
 
 /////////////////////////////////////////////////////////
+export class ProjectSignTimesRepBean {
+  date: string;
+  loginAccountId: string;
+  loginDepartId: string;
+  loginRoleId: string;
+  times: string;
+  loginName: string;
+  users: any;
+}
+
+export class ProjectListBean {
+  projectCode: string;
+  projectName: string;
+}
+
 export class ProjectAccountBean {
     accountId: string;
     accountName: string;
@@ -377,11 +392,17 @@ export class ProjectAccountBean {
 export class CameraBean {
     channelName: string;
     guId: string;
+    onLineStatus: string;
 }
 
 export class CameraVideoUrl {
     guId: string;
     playUrl: string;
+}
+
+export class StationCameraBean {
+    id: string;
+    cameras: CameraVideoUrl[];
 }
 
 ////////////////////////////////////////////////////////
@@ -391,4 +412,59 @@ export class PatrolCarBean {
   carCode: string;
   videoMac: string;
   organization: string;
+}
+
+export class RoadMgrEventStep {
+    Mobile: string;
+    Opinion: string;
+    OrganizationName: string;
+    ReceiveDateTime: string;
+    ReceivePerson: string;
+}
+
+export class RoadMgrEventBean {
+    AfterPicture: string;
+    AllotCode: string;
+    AllotedDate: string;
+    EventContent: string;
+    EventFeedback: string;
+    FeedbackTime: string;
+    ID: string;
+    Lane: number;
+    LatitudeLongitude: string;
+    Mark: string;
+    PatorCateGory: string;
+    PatorlItem: string;
+    Picture: string;
+    ReceiveOrg: string;
+    ReceiveTime: string;
+    Receiver: string;
+    RoadLine: string;
+    SendOrg: string;
+    SendPerson: string;
+    Status: string;
+    Step: RoadMgrEventStep[];
+}
+
+export class RoadMgrLawBean {
+    PatorlCateGory_ID: string;
+    RoadLawContent: string;
+    PatorlItemName: string;
+    HandleRegulations: string;
+    ID: string;
+    PatorlCateGoryName: string;
+    RoadLaw: string;
+    RoadSafeContent: string;
+    PatorlItem_ID: string;
+}
+
+export class PatorlBean {
+    DetailsCount: number;
+    PatorlCar: string;
+    PatorlRoadLines: string;
+    ID: string;
+    PatorlDate: string;
+    Person: string;
+    Auxiliaries: string;
+    PatorlType: string;
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { ViolationBean } from '../../../beans/beans';
 import { TaxiDriverService } from '../../../services/taxi-driver-service';
-import { LoginService } from '../../../services/login-service';
+import { CommonHttpService } from '../../../services/common-http-service';
 import { CommonService } from '../../../services/common-service';
 
 @Component({
@@ -18,7 +18,7 @@ export class TaxiDriverViolation {
 
     constructor(public navCtrl: NavController,
         public params: NavParams,
-        public loginService: LoginService,
+        public commonHttpService: CommonHttpService,
         public loadingCtrl: LoadingController,
         public commonService: CommonService,
         public taxiDriverService: TaxiDriverService) {

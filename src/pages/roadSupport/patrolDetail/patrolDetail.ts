@@ -1,5 +1,6 @@
 import {Component, AfterViewInit, OnDestroy, OnInit} from "@angular/core";
-import {NavController, Platform, App} from "ionic-angular";
+import {NavController, Platform, App, NavParams} from "ionic-angular";
+import { PatorlBean } from '../../../beans/beans';
 
 declare var AMap;
 
@@ -7,6 +8,8 @@ declare var AMap;
   templateUrl: 'patrolDetail.html'
 })
 export class RoadSupportPatrolDetail implements OnInit, OnDestroy, AfterViewInit {
+
+  public patorlInfo: PatorlBean;
 
   public bMapReady: boolean;
   public map;
@@ -21,8 +24,10 @@ export class RoadSupportPatrolDetail implements OnInit, OnDestroy, AfterViewInit
 
   constructor(public navCtrl: NavController,
               public platform: Platform,
+              public params: NavParams,
               public theApp: App) {
     this.bMapReady = false;
+    this.patorlInfo = this.params.get("patorlInfo");
   }
 
   ngOnInit(): void {
@@ -34,19 +39,19 @@ export class RoadSupportPatrolDetail implements OnInit, OnDestroy, AfterViewInit
 
   ngAfterViewInit(): void {
 
-    this.setPointArray();
+    // this.setPointArray();
 
-    this.map = new AMap.Map('patrolmap', {
-      zoom: 14,
-      center: [this.pointList[0][0], this.pointList[0][1]]
-    });
+    // this.map = new AMap.Map('patrolmap', {
+    //   zoom: 14,
+    //   center: [this.pointList[0][0], this.pointList[0][1]]
+    // });
 
-    AMap.plugin(['AMap.ToolBar', 'AMap.Scale'], () => {
-      this.map.addControl(new AMap.ToolBar());
-      this.map.addControl(new AMap.Scale());
-    });
+    // AMap.plugin(['AMap.ToolBar', 'AMap.Scale'], () => {
+    //   this.map.addControl(new AMap.ToolBar());
+    //   this.map.addControl(new AMap.Scale());
+    // });
 
-    this.startRun();
+    // this.startRun();
   }
 
   setPointArray() {

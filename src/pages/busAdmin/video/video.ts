@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavController, NavParams, Platform, LoadingController } from 'ionic-angular';
 import { BusAdminService } from '../../../services/bus-admin-service';
-import { LoginService } from '../../../services/login-service';
+import { CommonHttpService } from '../../../services/common-http-service';
 import { CameraBean, CameraVideoUrl, BusGpsBean } from '../../../beans/beans';
 
 declare var AMap;
@@ -25,7 +25,7 @@ export class BusAdminVideo implements OnInit {
         public params: NavParams,
         public platform: Platform,
         public loadingCtrl: LoadingController,
-        public loginService: LoginService,
+        public commonHttpService: CommonHttpService,
         public busAdminService: BusAdminService) {
         this.busGpsInfo = this.params.get("gpsinfo");
         this.cameraList = this.params.get("cameralist");
@@ -79,7 +79,7 @@ export class BusAdminVideo implements OnInit {
     }
 
     sendBeatHeart() {
-        this.loginService.sendVideoBeatHeart(this.curVideoUrl.guId).subscribe(() => {
+        this.commonHttpService.sendVideoBeatHeart(this.curVideoUrl.guId).subscribe(() => {
         });
     }
 
@@ -92,7 +92,7 @@ export class BusAdminVideo implements OnInit {
 
     startPlay(item: any) {
         let curCamera: CameraBean = item;
-        this.loginService.getVideoPlayUrl(item.guId, "bus").subscribe(info => {
+        this.commonHttpService.getVideoPlayUrl(item.guId, "bus").subscribe(info => {
             if (info) {
                 this.curVideoUrl = info;
                 this.startBeatHeart();

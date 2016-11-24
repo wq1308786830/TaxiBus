@@ -8,37 +8,20 @@
 
 <ion-content class="road-ev-manage">
     <ion-list>
-      <ion-item (click)="patrolDetail()">
+      <ion-item (click)="patrolDetail(item)" *ngFor="let item of patorls">
         <div class="item-content">
           <div>
             <ion-thumbnail>
               <img src="assets/img/road/event_list_default_img.png">
             </ion-thumbnail>
             <div>
-              <p><span>巡查分类:</span><span>公路路面管理</span></p>
-              <p><span>接收单位:</span><span>溧阳二中队</span></p>
-              <p><span>巡查员:</span><span>谢东平</span></p>
+              <p><span>巡查分类:</span><span>{{item.PatorlType}}</span></p>
+              <p><span>接收单位:</span><span>{{item.PatorlCar}}</span></p>
+              <p><span>巡查员:</span><span>{{item.Person}}</span></p>
             </div>
           </div>
         </div>
-        <div class="item-btm"><span>路线:kl456京广线</span><span>2016-12-12  9:55:55</span></div>
-      </ion-item>
-
-      <ion-item>
-        <div class="item-content">
-          <div>
-            <ion-thumbnail>
-              <img src="assets/img/road/event_list_default_img.png">
-            </ion-thumbnail>
-            <div>
-              <p><span>巡查分类:</span><span>公路路面管理</span></p>
-              <p><span>接收单位:</span><span>溧阳二中队</span></p>
-              <p><span>巡查员:</span><span>谢东平</span></p>
-            </div>
-          </div>
-          <button ion-button item-right>已完成</button>
-        </div>
-        <div class="item-btm"><span>路线:kl456京广线</span><span>2016-12-12  9:55:55</span></div>
+        <div class="item-btm"><span>路线:{{item.PatorlRoadLines}}</span><span>{{item.PatorlDate}}</span></div>
       </ion-item>
     </ion-list>
 </ion-content>

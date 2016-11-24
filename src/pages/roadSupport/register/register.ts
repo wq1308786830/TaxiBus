@@ -8,7 +8,7 @@ import {PatrolCarBean} from "../../../beans/beans";
   templateUrl: 'register.html'
 })
 export class RoadSupportRegister implements OnInit{
-
+  public choosedCar: any;
   public carItems: PatrolCarBean[] = [];
 
   constructor(public navCtrl: NavController, public roadService: RoadSupportService){
@@ -16,11 +16,6 @@ export class RoadSupportRegister implements OnInit{
   }
 
   ngOnInit(): void {
-    this.roadService.getAllCar(0, 50).subscribe(data => {
-      if (data) {
-        this.carItems = data;
-      }
-    });
   }
 
   sign() {

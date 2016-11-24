@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-
+import { AlertController } from 'ionic-angular';
 
 @Injectable()
 export class CommonService {
 
-    constructor() {
+    constructor(public alertCtrl: AlertController,) {
     }
 
     getDayTimeStr(time: Date) {
@@ -22,5 +22,14 @@ export class CommonService {
         days = days.substring(days.length-2);
 
         return years + months + days + '000000';
+    }
+
+    showAlertMsg(msg: string) {
+        let alert = this.alertCtrl.create({
+            title: '提示',
+            subTitle: msg,
+            buttons: ['确定']
+        });
+        alert.present();
     }
 }

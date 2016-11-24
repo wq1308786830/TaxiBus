@@ -6,6 +6,7 @@ import {NavController} from "ionic-angular";
 })
 export class ProjectManageAddComment implements OnInit {
 
+public signFlag: boolean = true;
 
   constructor(public navCtrl: NavController){
 

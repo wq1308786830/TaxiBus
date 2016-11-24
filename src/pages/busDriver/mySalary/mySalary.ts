@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavController, Content } from 'ionic-angular';
 import { SalaryBean } from '../../../beans/beans';
 import { BusDriverService } from '../../../services/bus-driver-service';
-import { LoginService } from '../../../services/login-service';
+import { CommonHttpService } from '../../../services/common-http-service';
 import { DatePipe } from '@angular/common';
 
 
@@ -17,7 +17,7 @@ export class BusDriverMysalary implements OnInit {
 
   constructor(public navCtrl: NavController,
     public busDriverService: BusDriverService,
-    public loginService: LoginService) {
+    public commonHttpService: CommonHttpService) {
     this.mySalaryInfo = new SalaryBean();
   }
 
@@ -25,7 +25,7 @@ export class BusDriverMysalary implements OnInit {
     let curTime = new Date();
     let datePipe = new DatePipe('en-US');
     let curTimeStr = datePipe.transform(curTime, 'yyyyMM');
-    this.busDriverService.getSalaryDetailByCondition(this.loginService.accountInfo.id, curTimeStr).subscribe(data => {
+    this.busDriverService.getSalaryDetailByCondition(this.commonHttpService.accountInfo.id, curTimeStr).subscribe(data => {
       if (data && data.length > 0) {
         this.mySalaryInfo = data[0];
       }

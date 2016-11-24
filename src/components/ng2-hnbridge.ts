@@ -34,6 +34,9 @@ export class HNBridge {
 
     @Cordova({})
     static loginProject(susccessCb, errorCb, accountId: string, password: string){
+    }
 
+    @Cordova({})
+    static getLocation(susccessCb, errorCb){
     }
 }

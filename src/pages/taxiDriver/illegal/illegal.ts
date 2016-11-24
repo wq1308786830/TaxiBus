@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 import { IllegalBean } from '../../../beans/beans';
-import { LoginService } from '../../../services/login-service';
+import { CommonHttpService } from '../../../services/common-http-service';
 import { TaxiDriverService } from '../../../services/taxi-driver-service';
 import { CommonService } from '../../../services/common-service';
 
@@ -17,12 +17,12 @@ export class TaxiDriverIllegal {
     public driverNo: string;
 
     constructor(public navCtrl: NavController,
-        public loginService: LoginService,
+        public commonHttpService: CommonHttpService,
         public loadingCtrl: LoadingController,
         public commonService: CommonService,
         public taxiDriverService: TaxiDriverService) {
         this.curDateType = 1;
-        this.driverNo = this.loginService.accountInfo.id;
+        this.driverNo = this.commonHttpService.accountInfo.id;
     }
 
     ngOnInit() {

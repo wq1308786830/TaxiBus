@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { LoginService } from './login-service';
-import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
+import { CommonHttpService } from './common-http-service';
+import { Http, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import {
     BusGpsBean, BusSimpleInfoBean, BusDetailInfoBean, BusViolationBean, BusOperationAnlysisBean,
     IllegalBean, ViolationBean, DepartmentBean, BusSearchInfo, BusInsuranceBean
@@ -10,22 +10,10 @@ import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class BusAdminService {
-    static API_BASEURL: string = "http://221.131.92.133:8090/Bus_app_web/json/";
-    static HEADER_CONTENT_TYPE: string = "application/x-www-form-urlencoded";
+    static API_BASEURL: string = CommonHttpService.API_HOST + "Bus_app_web/json/";
+    static HEADER_CONTENT_TYPE: string = CommonHttpService.CONTENT_TYPE_APPLICATION;
 
-    constructor(public http: Http, public loginService: LoginService) {
-    }
-
-    private extractData(res: Response) {
-        let body = res.json();
-        return body.result;
-    }
-
-    private handleError(error: any) {
-        let errMsg = (error.message) ? error.message :
-            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-        console.error(errMsg);
-        return Observable.throw(errMsg);
+    constructor(public http: Http, public commonHttpService: CommonHttpService) {
     }
 
     /**
@@ -34,13 +22,17 @@ export class BusAdminService {
     public getRealTimeBus(): Observable<BusGpsBean[]> {
         let headers = new Headers({ 'Content-Type': BusAdminService.HEADER_CONTENT_TYPE });
         let searchs = new URLSearchParams();
-        searchs.set("accountCode", this.loginService.accountInfo.accountCode);
+        searchs.set("accountCode", this.commonHttpService.accountInfo.accountCode);
 
         let options = new RequestOptions({ headers: headers, search: searchs });
 
         return this.http.get(BusAdminService.API_BASEURL + "getAllCarRealtimeGPS", options)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .map(res=>{
+                return this.commonHttpService.extractData(res);
+            })
+            .catch(error=>{
+                return this.commonHttpService.handleError(error);
+            });
     }
 
     /**
@@ -51,13 +43,17 @@ export class BusAdminService {
         let headers = new Headers({ 'Content-Type': BusAdminService.HEADER_CONTENT_TYPE });
         let searchs = new URLSearchParams();
         searchs.set("busno", busno);
-        searchs.set("accountCode", this.loginService.accountInfo.accountCode);
+        searchs.set("accountCode", this.commonHttpService.accountInfo.accountCode);
 
         let options = new RequestOptions({ headers: headers, search: searchs });
 
         return this.http.get(BusAdminService.API_BASEURL + "getCurrentDirverAndBusInfoByBusNo", options)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .map(res=>{
+                return this.commonHttpService.extractData(res);
+            })
+            .catch(error=>{
+                return this.commonHttpService.handleError(error);
+            });
     }
 
     /**
@@ -68,13 +64,17 @@ export class BusAdminService {
         let headers = new Headers({ 'Content-Type': BusAdminService.HEADER_CONTENT_TYPE });
         let searchs = new URLSearchParams();
         searchs.set("onboardid", onboardid);
-        searchs.set("accountCode", this.loginService.accountInfo.accountCode);
+        searchs.set("accountCode", this.commonHttpService.accountInfo.accountCode);
 
         let options = new RequestOptions({ headers: headers, search: searchs });
 
         return this.http.get(BusAdminService.API_BASEURL + "getCurrentBusDetailInfo", options)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .map(res=>{
+                return this.commonHttpService.extractData(res);
+            })
+            .catch(error=>{
+                return this.commonHttpService.handleError(error);
+            });
     }
 
     /**
@@ -87,14 +87,17 @@ export class BusAdminService {
         searchs.set("departmentId", departmentId);
         searchs.set("pageIndex", pageIndex.toString());
         searchs.set("pageCount", pageCount.toString());
-        searchs.set("accountCode", this.loginService.accountInfo.accountCode);
+        searchs.set("accountCode", this.commonHttpService.accountInfo.accountCode);
 
         let options = new RequestOptions({ headers: headers, search: searchs });
 
         return this.http.get(BusAdminService.API_BASEURL + "getBusAndViolationsByDepartId", options)
-            // .timeout(10000, new Error('请求超时'))
-            .map(this.extractData)
-            .catch(this.handleError);
+            .map(res=>{
+                return this.commonHttpService.extractData(res);
+            })
+            .catch(error=>{
+                return this.commonHttpService.handleError(error);
+            });
     }
 
     /**
@@ -112,13 +115,17 @@ export class BusAdminService {
         searchs.set("searchEndTime", searchEndTime);
         searchs.set("busno", busno);
         searchs.set("dealType", dealType.toString());
-        searchs.set("accountCode", this.loginService.accountInfo.accountCode);
+        searchs.set("accountCode", this.commonHttpService.accountInfo.accountCode);
 
         let options = new RequestOptions({ headers: headers, search: searchs });
 
         return this.http.get(BusAdminService.API_BASEURL + "getBusViolationsByBusNo", options)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .map(res=>{
+                return this.commonHttpService.extractData(res);
+            })
+            .catch(error=>{
+                return this.commonHttpService.handleError(error);
+            });
     }
 
     /**
@@ -136,13 +143,17 @@ export class BusAdminService {
         searchs.set("searchEndTime", searchEndTime);
         searchs.set("busno", busno);
         searchs.set("dealType", dealType.toString());
-        searchs.set("accountCode", this.loginService.accountInfo.accountCode);
+        searchs.set("accountCode", this.commonHttpService.accountInfo.accountCode);
 
         let options = new RequestOptions({ headers: headers, search: searchs });
 
         return this.http.get(BusAdminService.API_BASEURL + "getBusIllegalsByBusNo", options)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .map(res=>{
+                return this.commonHttpService.extractData(res);
+            })
+            .catch(error=>{
+                return this.commonHttpService.handleError(error);
+            });
     }
 
     /**
@@ -161,13 +172,17 @@ export class BusAdminService {
         searchs.set("startTime", startTime);
         searchs.set("endTime", endTime);
         searchs.set("departmentId", departmentId);
-        searchs.set("accountCode", this.loginService.accountInfo.accountCode);
+        searchs.set("accountCode", this.commonHttpService.accountInfo.accountCode);
 
         let options = new RequestOptions({ headers: headers, search: searchs });
 
         return this.http.get(BusAdminService.API_BASEURL + "getOperationInfoAnlysisByNo", options)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .map(res=>{
+                return this.commonHttpService.extractData(res);
+            })
+            .catch(error=>{
+                return this.commonHttpService.handleError(error);
+            });
     }
 
     /**
@@ -180,13 +195,17 @@ export class BusAdminService {
         searchs.set("departmentid", departmentid);
         searchs.set("pageIndex", pageIndex.toString());
         searchs.set("pageCount", pageCount.toString());
-        searchs.set("accountCode", this.loginService.accountInfo.accountCode);
+        searchs.set("accountCode", this.commonHttpService.accountInfo.accountCode);
 
         let options = new RequestOptions({ headers: headers, search: searchs });
 
         return this.http.get(BusAdminService.API_BASEURL + "getBusesByDepartId", options)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .map(res=>{
+                return this.commonHttpService.extractData(res);
+            })
+            .catch(error=>{
+                return this.commonHttpService.handleError(error);
+            });
     }
 
     /**
@@ -199,13 +218,17 @@ export class BusAdminService {
         searchs.set("busno", busno);
         searchs.set("pageIndex", pageIndex.toString());
         searchs.set("pageCount", pageCount.toString());
-        searchs.set("accountCode", this.loginService.accountInfo.accountCode);
+        searchs.set("accountCode", this.commonHttpService.accountInfo.accountCode);
 
         let options = new RequestOptions({ headers: headers, search: searchs });
 
         return this.http.get(BusAdminService.API_BASEURL + "getBusByBusNo", options)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .map(res=>{
+                return this.commonHttpService.extractData(res);
+            })
+            .catch(error=>{
+                return this.commonHttpService.handleError(error);
+            });
     }
 
     /**
@@ -215,13 +238,17 @@ export class BusAdminService {
     public getAllDepartments(): Observable<DepartmentBean[]> {
         let headers = new Headers({ 'Content-Type': BusAdminService.HEADER_CONTENT_TYPE });
         let searchs = new URLSearchParams();
-        searchs.set("accountCode", this.loginService.accountInfo.accountCode);
+        searchs.set("accountCode", this.commonHttpService.accountInfo.accountCode);
 
         let options = new RequestOptions({ headers: headers, search: searchs });
 
         return this.http.get(BusAdminService.API_BASEURL + "getAllDepartments", options)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .map(res=>{
+                return this.commonHttpService.extractData(res);
+            })
+            .catch(error=>{
+                return this.commonHttpService.handleError(error);
+            });
     }
 
     /**
@@ -232,12 +259,16 @@ export class BusAdminService {
         let headers = new Headers({ 'Content-Type': BusAdminService.HEADER_CONTENT_TYPE });
         let searchs = new URLSearchParams();
         searchs.set("busNo", busno);
-        searchs.set("accountCode", this.loginService.accountInfo.accountCode);
+        searchs.set("accountCode", this.commonHttpService.accountInfo.accountCode);
 
         let options = new RequestOptions({ headers: headers, search: searchs });
 
         return this.http.get(BusAdminService.API_BASEURL + "getBusInsuranceInfo", options)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .map(res=>{
+                return this.commonHttpService.extractData(res);
+            })
+            .catch(error=>{
+                return this.commonHttpService.handleError(error);
+            });
     }
 }

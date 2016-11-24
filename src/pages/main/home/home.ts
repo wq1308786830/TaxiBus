@@ -5,8 +5,10 @@ import { TaxiAdminMainTab } from "../../taxiAdmin/maintab/maintab";
 import { BusAdminMainTab } from "../../busAdmin/maintab/maintab";
 import { RealMonitorMainpage } from "../../realMonitor/mainPage/mainPage";
 import { PasswordPage } from "../password/password";
-import { LoginService } from '../../../services/login-service';
-import {ProjectManageMainTab} from "../../projectManage/mainTab/mainTab";
+import { CommonHttpService } from '../../../services/common-http-service';
+import { ProjectService } from '../../../services/project-service';
+import { RoadSupportMainTab } from '../../roadSupport/mainTab/mainTab';
+import { ProjectManageMainTab } from "../../projectManage/mainTab/mainTab";
 
 declare var HNBridge;
 
@@ -19,7 +21,8 @@ export class HomePage implements OnInit {
         public params: NavParams,
         public platform: Platform,
         public loadingCtrl: LoadingController,
-        public loginService: LoginService) {
+        public commonHttpService: CommonHttpService,
+        public projectService: ProjectService) {
     }
 
     ngOnInit() {
@@ -32,12 +35,11 @@ export class HomePage implements OnInit {
                 break;
 
             case 2:
-                this.loginRoad();
+                this.navCtrl.push(RoadSupportMainTab);
                 break;
 
             case 3:
-              this.navCtrl.push(ProjectManageMainTab);
-                // this.loginProject();
+                this.gotoProject();
                 break;
 
             case 4:
@@ -45,19 +47,34 @@ export class HomePage implements OnInit {
                 break;
 
             case 5:
+                this.loginProject();
                 break;
 
             case 6:
                 break;
 
             case 7:
-                this.navCtrl.setRoot(RealMonitorMainpage);
+                this.navCtrl.push(RealMonitorMainpage);
                 break;
         }
     }
 
     onCLickChangePassword() {
         this.navCtrl.push(PasswordPage);
+    }
+
+    gotoProject() {
+        let loader = this.loadingCtrl.create({
+            content: "登录中..."
+        });
+        loader.present();
+
+        this.projectService.login().subscribe(info => {
+            loader.dismiss();
+            this.navCtrl.push(ProjectManageMainTab);
+        }, error => {
+            loader.dismiss();
+        });
     }
 
     loginProject() {
@@ -71,17 +88,17 @@ export class HomePage implements OnInit {
                 loader.dismiss();
                 HNBridge.gotoPage("project-main");
             }, () => {
-                loader.dismiss();
-            }, this.loginService.accountInfo.account, this.loginService.accountInfo.password);
+            }, this.commonHttpService.accountInfo.account, this.commonHttpService.accountInfo.password);
         } else {
-            this.loginService.project_login().subscribe(info => {
+            this.projectService.login().subscribe(info => {
                 loader.dismiss();
                 this.platform.ready().then(() => {
                     HNBridge.setAccountId(info.accountId, parseInt(info.roleId) === 9);
                     HNBridge.gotoPage("project-main");
-                }, error => {
-                    loader.dismiss();
+                    this.projectService.startGetLocation();
                 });
+            }, error => {
+                loader.dismiss();
             });
         }
     }

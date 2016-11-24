@@ -1,27 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
-import { LoginService } from './login-service';
-import { OperationAnlysisRespBean, IllegalBean, ViolationBean, SaftyInfoBean, DriverInfoBean,OperationRecordBean } from '../beans/beans';
+import { Http, Headers, RequestOptions, URLSearchParams } from '@angular/http';
+import { CommonHttpService } from './common-http-service';
+import { OperationAnlysisRespBean, IllegalBean, ViolationBean, SaftyInfoBean, DriverInfoBean, OperationRecordBean } from '../beans/beans';
 import { Observable } from 'rxjs/Rx';
 
-const API_BASEURL: string = "http://221.131.92.133:8090/Taxi_app_web/json/";
-const HEADER_CONTENT_TYPE: string = "application/x-www-form-urlencoded";
+const API_BASEURL: string = CommonHttpService.API_HOST + "Taxi_app_web/json/";
+const HEADER_CONTENT_TYPE: string = CommonHttpService.CONTENT_TYPE_APPLICATION;
 
 @Injectable()
 export class TaxiDriverService {
-    constructor(public http: Http, public loginService: LoginService) {
-    }
-
-    private extractData(res: Response) {
-        let body = res.json();
-        return body.result;
-    }
-
-    private handleError(error: any) {
-        let errMsg = (error.message) ? error.message :
-            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-        console.error(errMsg);
-        return Observable.throw(errMsg);
+    constructor(public http: Http, public commonHttpService: CommonHttpService) {
     }
 
     /**
@@ -39,13 +27,17 @@ export class TaxiDriverService {
         searchs.set("startTime", startTime);
         searchs.set("endTime", endTime);
         searchs.set("driverNo", driverno);
-        searchs.set("accountCode", this.loginService.accountInfo.accountCode);
+        searchs.set("accountCode", this.commonHttpService.accountInfo.accountCode);
 
         let options = new RequestOptions({ headers: headers, search: searchs });
 
         return this.http.get(API_BASEURL + "getOperationInfoAnlysisByDriverNo", options)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .map(res => {
+                return this.commonHttpService.extractData(res);
+            })
+            .catch(error => {
+                return this.commonHttpService.handleError(error);
+            });
     }
 
     /**
@@ -55,14 +47,18 @@ export class TaxiDriverService {
     public getCarNoAndDriverName(): Observable<DriverInfoBean> {
         let headers = new Headers({ 'Content-Type': HEADER_CONTENT_TYPE });
         let searchs = new URLSearchParams();
-        searchs.set("driverNo", this.loginService.accountInfo.id);
-        searchs.set("accountCode", this.loginService.accountInfo.accountCode);
+        searchs.set("driverNo", this.commonHttpService.accountInfo.id);
+        searchs.set("accountCode", this.commonHttpService.accountInfo.accountCode);
 
         let options = new RequestOptions({ headers: headers, search: searchs });
 
         return this.http.get(API_BASEURL + "getCarNoAndDriverName", options)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .map(res => {
+                return this.commonHttpService.extractData(res);
+            })
+            .catch(error => {
+                return this.commonHttpService.handleError(error);
+            });
     }
 
     /**
@@ -73,13 +69,17 @@ export class TaxiDriverService {
         let headers = new Headers({ 'Content-Type': HEADER_CONTENT_TYPE });
         let searchs = new URLSearchParams();
         searchs.set("driverNo", driverNo);
-        searchs.set("accountCode", this.loginService.accountInfo.accountCode);
+        searchs.set("accountCode", this.commonHttpService.accountInfo.accountCode);
 
         let options = new RequestOptions({ headers: headers, search: searchs });
 
         return this.http.get(API_BASEURL + "getOperateRecords", options)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .map(res => {
+                return this.commonHttpService.extractData(res);
+            })
+            .catch(error => {
+                return this.commonHttpService.handleError(error);
+            });
     }
 
     /**
@@ -90,13 +90,17 @@ export class TaxiDriverService {
         let headers = new Headers({ 'Content-Type': HEADER_CONTENT_TYPE });
         let searchs = new URLSearchParams();
         searchs.set("driverNo", driverNo);
-        searchs.set("accountCode", this.loginService.accountInfo.accountCode);
+        searchs.set("accountCode", this.commonHttpService.accountInfo.accountCode);
 
         let options = new RequestOptions({ headers: headers, search: searchs });
 
         return this.http.get(API_BASEURL + "getTaxiSaftyInfosByDriverNo", options)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .map(res => {
+                return this.commonHttpService.extractData(res);
+            })
+            .catch(error => {
+                return this.commonHttpService.handleError(error);
+            });
     }
 
     /**
@@ -107,13 +111,17 @@ export class TaxiDriverService {
         let headers = new Headers({ 'Content-Type': HEADER_CONTENT_TYPE });
         let searchs = new URLSearchParams();
         searchs.set("driverNo", driverNo);
-        searchs.set("accountCode", this.loginService.accountInfo.accountCode);
+        searchs.set("accountCode", this.commonHttpService.accountInfo.accountCode);
 
         let options = new RequestOptions({ headers: headers, search: searchs });
 
         return this.http.get(API_BASEURL + "getTaxiIllegalsByDriverNoForTwo", options)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .map(res => {
+                return this.commonHttpService.extractData(res);
+            })
+            .catch(error => {
+                return this.commonHttpService.handleError(error);
+            });
     }
 
 
@@ -125,13 +133,17 @@ export class TaxiDriverService {
         let headers = new Headers({ 'Content-Type': HEADER_CONTENT_TYPE });
         let searchs = new URLSearchParams();
         searchs.set("driverNo", driverNo);
-        searchs.set("accountCode", this.loginService.accountInfo.accountCode);
+        searchs.set("accountCode", this.commonHttpService.accountInfo.accountCode);
 
         let options = new RequestOptions({ headers: headers, search: searchs });
 
         return this.http.get(API_BASEURL + "getTaxiViolationsByDriverNoForTwo", options)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .map(res => {
+                return this.commonHttpService.extractData(res);
+            })
+            .catch(error => {
+                return this.commonHttpService.handleError(error);
+            });
     }
 
     /**
@@ -139,7 +151,7 @@ export class TaxiDriverService {
      * driverNo:
      */
     public getTaxiIllegalsByDriverNo(driverNo: string, searchStartTime: string,
-    searchEndTime: string, dealType: number, pageIndex: number, pageCount: number): Observable<IllegalBean[]> {
+        searchEndTime: string, dealType: number, pageIndex: number, pageCount: number): Observable<IllegalBean[]> {
         let headers = new Headers({ 'Content-Type': HEADER_CONTENT_TYPE });
         let searchs = new URLSearchParams();
         searchs.set("driverNo", driverNo);
@@ -148,13 +160,17 @@ export class TaxiDriverService {
         searchs.set("dealType", dealType.toString());
         searchs.set("pageIndex", pageIndex.toString());
         searchs.set("pageCount", pageCount.toString());
-        searchs.set("accountCode", this.loginService.accountInfo.accountCode);
+        searchs.set("accountCode", this.commonHttpService.accountInfo.accountCode);
 
         let options = new RequestOptions({ headers: headers, search: searchs });
 
         return this.http.get(API_BASEURL + "getTaxiIllegalsByDriverNo", options)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .map(res => {
+                return this.commonHttpService.extractData(res);
+            })
+            .catch(error => {
+                return this.commonHttpService.handleError(error);
+            });
     }
 
     /**
@@ -162,7 +178,7 @@ export class TaxiDriverService {
      * driverNo:
      */
     public getTaxiViolationsByDriverNo(driverNo: string, searchStartTime: string,
-    searchEndTime: string, dealType: number, pageIndex: number, pageCount: number): Observable<ViolationBean[]> {
+        searchEndTime: string, dealType: number, pageIndex: number, pageCount: number): Observable<ViolationBean[]> {
         let headers = new Headers({ 'Content-Type': HEADER_CONTENT_TYPE });
         let searchs = new URLSearchParams();
         searchs.set("driverNo", driverNo);
@@ -171,12 +187,16 @@ export class TaxiDriverService {
         searchs.set("dealType", dealType.toString());
         searchs.set("pageIndex", pageIndex.toString());
         searchs.set("pageCount", pageCount.toString());
-        searchs.set("accountCode", this.loginService.accountInfo.accountCode);
+        searchs.set("accountCode", this.commonHttpService.accountInfo.accountCode);
 
         let options = new RequestOptions({ headers: headers, search: searchs });
 
         return this.http.get(API_BASEURL + "getTaxiViolationsByDriverNo", options)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .map(res => {
+                return this.commonHttpService.extractData(res);
+            })
+            .catch(error => {
+                return this.commonHttpService.handleError(error);
+            });
     }
 }

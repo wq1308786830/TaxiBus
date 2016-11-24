@@ -28,18 +28,36 @@
     height: 10px;
   }
 
-  .list-ios > .item-block:last-child, .list-ios > .item-block:first-child {
-    border: none;
+  .list-ios > .item-block {
+    &:last-child, &:first-child {
+      border: none;
+    }
+    .item-inner {
+      border-bottom: 0.55px #eee solid;
+    }
   }
 
-  .item-ios p:nth-of-type(2) {
-    color: #000;
+  .item-ios {
+    h4 {
+      margin-bottom: 10px;
+    }
+    p:nth-of-type(2) {
+      color: #000;
+    }
+  }
+
+  .second {
+    .item-ios {
+      h4 {
+        margin-bottom: 10px;
+      }
+    }
   }
 
   ion-list {
     background-color: #eee;
     ion-item {
-      align-items: flex-end;
+      align-items: flex-start;
     }
   }
 
