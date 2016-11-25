@@ -9,9 +9,9 @@
   <!--todo:此处的搜索结果展现在地图下面的list中-->
   <!--<ion-searchbar button placeholder="项目名称/项目施工地点搜索" (click)="onClickSearch()"></ion-searchbar>-->
   <ion-list class="item-list">
-    <ion-item (click)="markPosition(116.470098,39.992838)">
+    <ion-item (click)="changeProject()">
       <img src="assets/img/video_02.png">
-      <span class="item-title">溧阳市改造工程建设局</span>
+      <span class="item-title">{{projectDetail.projectName}}</span>
     </ion-item>
   </ion-list>
   <div class="map-detail" id="videomap">

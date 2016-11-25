@@ -442,6 +442,12 @@ export class EquipmentGPS {
   latitude: string;
 }
 
+export class VideoPlayBean {
+  guId: string;
+  playUrl: string;
+  tmpGuId: string;
+}
+
 export class CameraBean {
     channelName: string;
     guId: string;

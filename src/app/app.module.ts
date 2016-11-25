@@ -121,6 +121,7 @@ import {ProjectManageChangeLoc} from "../pages/projectManage/changeLoc/changeLoc
 import {ProjectManageAddComment} from "../pages/projectManage/addComment/addComment";
 import {ProjectManageRegManage} from "../pages/projectManage/regManage/regManage";
 import {ProjectManageFileDetail} from "../pages/projectManage/fileDetail/fileDetail";
+import {ProjectManageProjectList} from "../pages/projectManage/videoManageList/videoManageList";
 
 
 @NgModule({
@@ -204,6 +205,7 @@ import {ProjectManageFileDetail} from "../pages/projectManage/fileDetail/fileDet
     ProjectManageChangeLoc,
     ProjectManageRegManage,
     ProjectManageFileDetail,
+    ProjectManageProjectList
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -294,16 +296,17 @@ import {ProjectManageFileDetail} from "../pages/projectManage/fileDetail/fileDet
     ProjectManageChangeLoc,
     ProjectManageRegManage,
     ProjectManageFileDetail,
+    ProjectManageProjectList
   ],
   providers: [
-    HNBridge, 
-    CommonService, 
-    CommonHttpService, 
-    BusAdminService, 
-    TaxiDriverService, 
-    TaxiAdminService, 
-    BusDriverService, 
-    RoadSupportService, 
+    HNBridge,
+    CommonService,
+    CommonHttpService,
+    BusAdminService,
+    TaxiDriverService,
+    TaxiAdminService,
+    BusDriverService,
+    RoadSupportService,
     ProjectService,
     DropdownController
   ]

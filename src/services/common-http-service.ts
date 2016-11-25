@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class CommonHttpService {
-    static API_HOST: string = "http://221.131.92.133:8090/";//"http://221.131.92.133:8090/"; "http://192.168.1.102:3001/"
+    static API_HOST: string = "http://192.168.1.102:3001/";//"http://221.131.92.133:8090/"; "http://192.168.1.102:3001/"
     static CONTENT_TYPE_APPLICATION: string = "application/x-www-form-urlencoded";
 
     public accountInfo: AccountBean;

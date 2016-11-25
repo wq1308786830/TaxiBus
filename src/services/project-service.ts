@@ -4,7 +4,7 @@ import {Platform} from "ionic-angular";
 import {CommonHttpService} from "./common-http-service";
 import {
   ProjectAccountBean, ProjectSignTimesRepBean, ProjectItemBean, SignInfoBean,
-  ProjectFileInfo, ProjectFileContent, ProjectDetailBean
+  ProjectFileInfo, ProjectFileContent, ProjectDetailBean, VideoPlayBean
 } from "../beans/beans";
 import {HNBridge} from "../components/ng2-hnbridge";
 import {Observable} from "rxjs/Rx";
@@ -15,6 +15,7 @@ export class ProjectService {
   static HEADER_CONTENT_TYPE: string = "text/html;charset=utf-8";
 
   public getLocatioonTimer: number;
+  public projectDetail: ProjectDetailBean;
 
   constructor(public http: Http,
               public platform: Platform,
@@ -269,6 +270,11 @@ export class ProjectService {
       });
   }
 
+  /**
+   * getProjectInfo
+   * @param info
+   * @returns {Observable<R>}
+   */
   public getProjectInfo(info: string): Observable<ProjectDetailBean[]> {
     let headers = new Headers({'Content-Type': ProjectService.HEADER_CONTENT_TYPE});
     let searchs = new URLSearchParams();
@@ -278,6 +284,28 @@ export class ProjectService {
     let options = new RequestOptions({headers: headers, search: searchs});
 
     return this.http.get(ProjectService.API_BASEURL + "mobile/getProjectInfo", options)
+      .map(res => {
+        return this.commonHttpService.extractData(res);
+      })
+      .catch(error => {
+        return this.commonHttpService.handleError(error);
+      });
+  }
+
+  /**
+   * getVideoPlayUrl
+   * @param equipmentCode
+   * @returns {Observable<R>}
+   */
+  public getVideoPlayUrl(equipmentCode: string): Observable<VideoPlayBean> {
+    let headers = new Headers({'Content-Type': ProjectService.HEADER_CONTENT_TYPE});
+    let searchs = new URLSearchParams();
+    searchs.set("accountId", this.commonHttpService.accountInfo.account);
+    searchs.set("equipmentCode", equipmentCode);
+
+    let options = new RequestOptions({headers: headers, search: searchs});
+
+    return this.http.get(ProjectService.API_BASEURL + "mobile/getVideoPlayUrl", options)
       .map(res => {
         return this.commonHttpService.extractData(res);
       })
