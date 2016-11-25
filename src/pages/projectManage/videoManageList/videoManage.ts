@@ -1,8 +1,7 @@
 import { Component, AfterViewInit, OnDestroy, OnInit } from "@angular/core";
 import { NavController, Platform, App, NavParams } from "ionic-angular";
-import {CameraBean, CameraVideoUrl, ProjectDetailBean} from "../../../beans/beans";
+import { CameraBean, CameraVideoUrl } from "../../../beans/beans";
 import { CommonHttpService } from "../../../services/common-http-service";
-import {ProjectService} from "../../../services/project-service";
 
 declare var AMap;
 declare var HNBridge;
@@ -12,46 +11,36 @@ declare var HNBridge;
 })
 export class ProjectManageVideo implements OnInit, OnDestroy, AfterViewInit {
 
-  public projectDetailList: ProjectDetailBean[] = [];
-
   public map: any;
   public marker: any;
   public markers: any = [];
+  public result: any = {};
 
   public beatHeartTimer: number;
+  public cameraList: CameraBean[];
   public curVideoUrl: CameraVideoUrl;
 
   constructor(public navCtrl: NavController,
     public params: NavParams,
     public platform: Platform,
-    public commonHttpService: CommonHttpService,
-  public projectService: ProjectService) {
+    public theApp: App,
+    public commonHttpService: CommonHttpService) {
+    this.cameraList = this.params.get("cameralist");
     this.beatHeartTimer = -1;
   }
 
   ngOnInit(): void {
-    this.projectService.getProjectInfo('').subscribe(data => {
-      if (data) {
-        this.projectDetailList = data;
-      }
-    });
   }
 
   ngOnDestroy(): void {
     this.clearBeatHeart();
   }
   ngAfterViewInit(): void {
-    this.markWithVideo(this.projectDetailList[0]);
 
-  }
-
-  markWithVideo(projectDetail: ProjectDetailBean) {
-    let pLon = projectDetail.lonLat.split(";")[0].split(",")[0];
-    let pLat = projectDetail.lonLat.split(";")[0].split(",")[1];
     this.map = new AMap.Map('videomap', {
       zoom: 14,
       zoomEnable: true,
-      center: [pLon, pLat]
+      center: [116.470098, 39.992838]
     });
 
     AMap.plugin(['AMap.ToolBar', 'AMap.Scale'], () => {
@@ -59,22 +48,26 @@ export class ProjectManageVideo implements OnInit, OnDestroy, AfterViewInit {
       this.map.addControl(new AMap.Scale());
     });
 
-    for (let i = 0; i < projectDetail.equips.length; i++) {
-      this.markers[i] = new AMap.Marker({
-        position: [projectDetail.equips[i].longitude, projectDetail.equips[i].longitude],
-        draggable: false,
-        map: this.map
-      });
-      AMap.event.addListener(this.marker, 'touchend', () => {
+    this.marker = new AMap.Marker({
+      position: [116.470098, 39.992838],
+      title: 'aaaaaa',
+      draggable: false,
+      map: this.map
+    });
+    this.markers.push(this.marker);
+
+    for (let mark of this.markers) {
+      AMap.event.addListener(mark, 'touchend', () => {
         console.log("aaaaaaaaaaaa");
         // this.startPlay();
       });
-      AMap.event.addListener(this.marker, 'click', () => {
+      AMap.event.addListener(mark, 'click', () => {
         // this.startPlay();
         console.log("aaaaaaaaaaaa");
       });
     }
   }
+
 
   getCameraValue(item) {
     return item.guId;
@@ -119,4 +112,7 @@ export class ProjectManageVideo implements OnInit, OnDestroy, AfterViewInit {
     });
   }
 
+  onClickSearch() {
+    this.result = {};
+  }
 }

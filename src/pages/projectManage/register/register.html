@@ -36,7 +36,7 @@
         选择项目
       </ion-label>
       <ion-select [(ngModel)]="proDataItem">
-        <ion-option *ngFor="let data of proData">{{data.projectName}}</ion-option>
+        <ion-option [value]="data" *ngFor="let data of proData">{{data.projectName}}</ion-option>
       </ion-select>
     </ion-item>
   </ion-list>

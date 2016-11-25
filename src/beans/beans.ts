@@ -376,9 +376,15 @@ export class ProjectSignTimesRepBean {
   users: any;
 }
 
-export class ProjectListBean {
+export class ProjectItemBean {
   projectCode: string;
   projectName: string;
+}
+
+export class SignInfoBean {
+  projectCode: string;
+  projectName: string;
+  users: string[];
 }
 
 export class ProjectAccountBean {
@@ -387,6 +393,53 @@ export class ProjectAccountBean {
     departId: string;
     roleId: string;
     roleName: string;
+}
+
+export class SignLocBean {
+  signinAddr: string;
+  signinLonLat: string;
+  signoutAddr: string;
+  signoutLonLat: string;
+}
+
+export class AMapLocInfo {
+  id: string;
+  name: string;
+  location: string;
+  address: string;
+}
+
+export class ProjectFileInfo {
+  projectCode: string;
+  projectName: string;
+  fileNum: string;
+  files: FileInfo[];
+}
+
+export class FileInfo {
+  fileName: string;
+  filePath: string;
+  fileSize: string;
+}
+
+export class ProjectFileContent {
+
+}
+
+export class ProjectDetailBean {
+  projectCode: string;
+  projectName: string;
+  projectAddr: string;
+  lonLat: string;
+  equips: EquipmentGPS[];
+}
+
+export class EquipmentGPS {
+  equipmentCode: string;
+  date: string;
+  state: string;
+  longitude: string;
+  latitude: string;
 }
 
 export class CameraBean {

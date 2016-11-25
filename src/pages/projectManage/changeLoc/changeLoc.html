@@ -7,15 +7,15 @@
 </ion-header>
 <ion-content class="project-change-loc">
   <!--todo:此处的搜索结果展现在地图下面的list中-->
-  <ion-searchbar button placeholder="搜索" (click)="onClickSearch()"></ion-searchbar>
+  <ion-searchbar button placeholder="搜索" (ionInput)="onClickSearch($event)" [(ngModel)]="myInput"></ion-searchbar>
   <div class="map-detail" id="locmap">
     <div class="map-cover-footer"></div>
   </div>
 
   <ion-list class="item-list">
-    <ion-item (click)="markPosition(116.470098,39.992838)">
-      <h2 class="item-title">溧阳市建设局</h2>
-      <p item-right>罗弯路8号建设服务大楼</p>
+    <ion-item (click)="markPosition(item.location)" *ngFor="let item of positionList">
+      <h2 class="item-title">{{item.name}}</h2>
+      <p item-right>{{item.address}}</p>
     </ion-item>
   </ion-list>
 </ion-content>

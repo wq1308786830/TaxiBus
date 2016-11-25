@@ -4,7 +4,7 @@ import {ProjectManageChangeLoc} from "../changeLoc/changeLoc";
 import {ProjectManageAddComment} from "../addComment/addComment";
 import {ProjectService} from "../../../services/project-service";
 import {HNBridge} from "../../../components/ng2-hnbridge";
-import {ProjectSignTimesRepBean, ProjectListBean} from "../../../beans/beans";
+import {ProjectSignTimesRepBean, ProjectItemBean, SignLocBean} from "../../../beans/beans";
 
 declare var AMap;
 
@@ -17,9 +17,10 @@ export class ProjectManageRegister implements OnInit, OnDestroy, AfterViewInit {
   public markers: any = [];
   public signData: ProjectSignTimesRepBean = new ProjectSignTimesRepBean();
   public dateVal: any = {};
-  public proData: ProjectListBean[] = [];
-  public locInfo: any = {};
+  public proData: ProjectItemBean[] = [];
+  public locInfo: SignLocBean = new SignLocBean();
   public signFlag: boolean = true;
+  public proDataItem: any = {};
 
   constructor(public navCtrl: NavController, public projectService: ProjectService,
               public platform: Platform) {
@@ -72,12 +73,12 @@ export class ProjectManageRegister implements OnInit, OnDestroy, AfterViewInit {
 
   }
 
-  signin(proDataItem: any) {
-    this.navCtrl.push(ProjectManageAddComment, {dateVal: this.dateVal, locInfo: this.locInfo, prodata: proDataItem});
+  signin() {
+    this.navCtrl.push(ProjectManageAddComment, {dateVal: this.dateVal, locInfo: this.locInfo, proData: this.proDataItem});
   }
 
   signout() {
-    this.navCtrl.push(ProjectManageAddComment);
+    this.navCtrl.push(ProjectManageAddComment, {dateVal: this.dateVal, locInfo: this.locInfo, proData: this.proDataItem});
   }
 
   changeLoc() {
